@@ -1,0 +1,32 @@
+.button {
+    border-radius: rem(10);
+    display: flex;
+    align-items: center;
+    gap: rem(40);
+    padding: rem(15) rem(22);
+    &__text {
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        line-height: rem(25);
+        text-transform: uppercase;
+    }
+    &__arrow {
+        width: rem(10);
+        height: rem(10);
+    }
+    &--primary {
+        background-color: var(--primary);
+        color: var(--white);
+    }
+    @include phone {
+        padding: rem(12.5) rem(20);
+        &__text {
+            font-size: rem(12);
+        }
+        &__arrow {
+            width: rem(8);
+            height: rem(8);
+        }
+    }
+}

@@ -1,0 +1,57 @@
+<form action="#" method="POST" name="">
+    {# <div class="form__control"></div> #}
+    <div class="form__field form-field"> 
+        <label for="name" class="form__field-label form__label">Ваше имя</label>
+        <input id="name" type="text" name="name" placeholder="Иван Иванов" autocomplete="off" class="form__field-input form__input">
+        <span class="form__field-error-text form__error-text" data-name="name-error">Текст ошибки</span>
+    </div>
+    <div class="form__field form-field">
+        <label for="mail" class="form__field-labler form__label">Ваша почта</label>
+        <input id="mail" type="mail" name="mail" placeholder="info@mail.ru" autocomplete="off" class="form__field-input form__input">
+        <span class="form__field-error-text form__error-text" data-name="name-error">Текст ошибки</span>
+    </div>
+    <div class="form__field form-field">
+        <label for="phone" class="form__field-input form__input">Ваш телефон</label>
+        <input id="phone" type="tel" name="phone" placeholder="+7 (999) 999-99-99" autocomplete="off" class="form__field-input form__input">
+        <span class="form__field-error-text form__error-text" data-name="name-error">Текст ошибки</span>
+    </div>
+    <div class="form__field form-field">
+        <label for="comment" class="form__field-label form__label">Ваш комментарий</label>
+        <textarea id="comment" name="comment" cols="30" rows="10" autocomplete="off" class="form__field-input form__input form__input--textarea"></textarea>
+    </div>
+    <div class="form__radio">
+        <input type="radio" name="group-1" id="radio-" value="" checked class="form__radio-input">
+        <label for="" class="form__radio-label"></label>
+    </div>
+    <div class="">
+        <label for="radio-1" class="form__radio">
+            <input type="radio" name="group-1" id="radio-1" value="1" checked class="form__radio-input">
+            <span class="form__radio-label">Кнопка №1</span>
+        </label>
+        <label for="radio-2" class="form__radio">
+            <input type="radio" name="group-1" id="radio-2" value="2" class="form__radio-input">
+            <span class="form__radio-label">Кнопка №2</span>
+        </label>
+        <label for="radio-3" class="form__radio">
+            <input type="radio" name="group-1" id="radio-3" value="3" class="form__radio-input">
+            <span class="form__radio-label">Кнопка №3</span>
+        </label>
+    </div>
+    <div class="form__file">
+        <div class="form__file-field">
+            <input id="file" type="file" accept=".pdf, .doc, .docx" class="form__file-input">
+        </div>
+        <div class="form__file-doc">
+            <span class="text"></span>
+            <button class="close" type="button"></button>
+        </div>
+    </div>
+    <div class="form__agreement">
+        <label for="check" class="form__checkbox">
+            <input type="checkbox" name="checkbox" class="form__checkbox-input">
+            <span class="form__checkbox-box"></span>
+            <span class="form__checkbox-label">Я согласен с политикой конфидициальности</span>
+        </label>
+    </div>
+    <button class="form__submit" type="submit">Отправить</button>
+</form>

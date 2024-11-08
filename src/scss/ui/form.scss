@@ -1,0 +1,161 @@
+.form {
+    &__field {
+        &--wide {
+            flex: 0 0 100% !important;
+        }
+        &--error {
+            .form__input {
+                border-color: var(--red);
+            }
+        }
+    }
+
+    &__input {
+        width: 100%;
+        &--textarea {
+            height: rem(105);
+        }
+        &:focus {}
+        &::placeholder {}
+    }
+
+    &__error-text {
+        display: none;
+    }
+
+    &__checkbox {
+    }
+
+    &__checkbox-input {
+        border: 0;
+        margin: -1px;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+    }
+
+    &__checkbox-box {
+    }
+
+    &__checkbox-label {
+    }
+
+
+    &__file {
+        align-self: flex-start;
+        max-width: 100%;
+        &_attached &-field {
+            display: none;
+        }
+        &_attached &-doc {
+            display: flex;
+        }
+    }
+    &__file-input {
+        appearance: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+    &__file-label,
+    &__file-doc {
+        align-items: center;
+        justify-content: flex-start;
+        align-items: center;
+        gap: rem(12);
+        span {
+            font-size: rem(18);
+            font-weight: 400;
+            line-height: calc(25 / 18);
+            letter-spacing: -0.02em;
+        }
+    }
+    &__file-label {
+        cursor: pointer;
+        display: flex;
+        transition: background-color 0.2s ease 0s;
+        .icon {
+            background-color: var(--background-color);
+            border-radius: 50%;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            width: rem(30);
+            height: rem(30);
+            &::before, &::after {
+                background-color: var(--black);
+                content: "";
+                position: absolute;
+                top: calc(50% - rem(1));
+                left: rem(10);
+                width: rem(10);
+                height: rem(2);
+            }
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    &__file-doc {
+        cursor: auto;
+        display: none;
+        .text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        button {
+            background-color: var(--background-color);
+            border-radius: 50%;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            width: rem(30);
+            height: rem(30);
+            &::before, &::after {
+                background-color: var(--black);
+                content: "";
+                position: absolute;
+                top: calc(50% - rem(1));
+                left: rem(10);
+                width: rem(10);
+                height: rem(2);
+            }
+            &::after {
+                transform: rotate(45deg);
+            }
+            &::before {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    &__submit {
+        flex-shrink: 0;
+        cursor: pointer;
+        .button__arrow {
+            color: var(--red);
+        }
+    }
+
+    @media screen and (min-width: 993px) {
+        &__file {
+            max-width: rem(420);
+        }
+    }
+    @include phone {
+        &__input {
+            font-size: rem(16);
+            line-height: calc(20 / 16);
+            padding-bottom: rem(15);
+            &--textarea {
+                height: rem(80);
+            }
+        }
+    }
+}

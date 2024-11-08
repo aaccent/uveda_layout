@@ -1,0 +1,73 @@
+:root {
+    --white: #FFFFFF;
+    --primary: #0079C4;
+    --text-color: #09090A;
+    --background: #141414;
+    // --init-width: 1920;
+    // --init-width_units: calc(var(--init-width) * 1px);
+    // @media screen and (min-width: 1920px) {
+    //     --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
+    //     --font-size: calc(16px + 16 * var(--screen-diff));
+    // }
+}
+
+// @function calc-between-width($width-start, $value-start, $width-end, $value-end)
+//     @return calc(#{$value-start} * 1px + (#{$value-end} - #{$value-start}) * (100vw - #{$width-start} * 1px) / (#{$width-end} - #{$width-start}))
+
+// calc-between-width(1600, 16, 1920, 19.2)
+
+// .container {
+//     background: rgba(0,0,0,0.8);
+//     backdrop-filter: saturate(180%) blur(10px);
+// }
+
+// box-shadow: inset 0 0 15px #000; 0 0 0 #000;
+// onhover : box-shadow: inset 0 0 0 #000, 0 8px 15px #000
+
+// body {
+//     // font grows 1px for every 100px of viewport width
+//     font-size: calc(16px + 1vw);
+//     // leading grows along with font,
+//     // with an additional 0.1em + 0.5px per 100px of the viewport
+//     line-height: calc(1.1em + 0.5vw);
+// }
+
+
+body {
+    background-color: var(--background);
+    color: var(--white);
+    &._lock {
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+.container {
+    --padding-x: 80px;
+    font-family: "Involve", "sans-serif";
+    margin: 0 auto;
+    padding: 0 var(--padding-x);
+    @include adaptive-value(--padding-x, 20, 80, 576, $container-width);
+    width: 100%;
+    max-width: rem($container-width);
+}
+
+.visually-hidden {
+    border: 0;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/// если текст внутри flex контейнера не сжиамется, то есть
+/// вылазит за пределы контейнера, то данному флекс-элементу 
+/// нужно установить min-width: 0, так как по умолчаниию min-width: auto
+/// 
+///   overflow-wrap: break-word; ?????
+///   min-width: 0;
+
+/// если flex-direction: column, то такой же трюк проделываем с min-height

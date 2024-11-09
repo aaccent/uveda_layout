@@ -412,7 +412,25 @@ window.onload = function() {
                 prevEl: " .stocks .swiper-button-prev",
             },
             pagination: {
-                el: '.stocks .swiper-pagination',
+                el: "stocks .swiper-pagination",
+            },
+        })
+        //products
+        new Swiper(".products__swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            breakpoints: {
+                577: {
+                    spaceBetween: 16,
+
+                }
+            },
+            navigation: {
+                nextEl: ".products .swiper-button-next",
+                prevEl: " .products .swiper-button-prev",
+            },
+            pagination: {
+                el: ".products .swiper-pagination",
             },
         })
     }

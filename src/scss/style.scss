@@ -16,4 +16,12 @@
 @import "modules/header.scss";
 @import "modules/hero.scss";
 @import "modules/stocks.scss";
+.stocks {
+    --mb: 11.5625rem;
+    @include adaptive-value(--mb, 80, 185, 576, $container-width);
+    &:not(:last-child) {
+        margin: 0 0 var(--mb)
+    }
+}
+@import "modules/products.scss";
 @import "modules/footer.scss";

@@ -1,0 +1,50 @@
+<section class="products section">
+    <div class="section__container container">
+        <div class="section__header">
+            <div class="section__title">Продукция</div>
+            <div class="products__swiper-controls swiper-controls">
+                <div class="swiper-button-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="#09090A" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="swiper-pagination"></div> 
+                <div class="swiper-button-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="#09090A" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="products__body section__body">
+            <div class="products__swiper swiper">
+                <div class="swiper-wrapper">
+                    {% set products = [
+                        { name: "Оси", img: "product-01.png" },
+                        { name: "Подвеска", img: "product-02.png" },
+                        { name: "Тормозные системы", img: "product-03.png" },
+                        { name: "Комплектующие", img: "product-01.png" },
+                        { name: "Запасные части", img: "product-01.png" }
+                    ] %}
+                    {% for i in range(2) %}
+                        {% for product in products %}
+                            <div class="products__item product swiper-slide">
+                                <div class="product__amount">12 позиций</div>
+                                <div class="product__image">
+                                    <img src="./images/{{product.img}}" alt="">
+                                </div>
+                                <div class="product__name">{{ product.name }}</div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="products__more button button--primary" type="button">
+                <span class="button__text">Cмотреть все акции</span>
+                <svg class="button__arrow" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                    <path d="M0 1.5H10V11.5" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

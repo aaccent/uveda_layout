@@ -387,6 +387,34 @@ window.onload = function() {
                 el: '.swiper-pagination',
             },
         })
+        //stocks
+        new Swiper(".stocks__swiper", {
+            // slidesPerView: "auto",
+            slidesPerView: 1.1,
+            spaceBetween: 10,
+            breakpoints: {  
+                577: {
+                    slidesPerView: 1.5
+                },
+                769: {
+                    slidesPerView: 2,
+                    spaceBetween: 16
+                },
+                993: {
+                    slidesPerView: 2.5,
+                },
+                1281: {
+                    slidesPerView: 3,
+                }
+            },
+            navigation: {
+                nextEl: ".stocks .swiper-button-next",
+                prevEl: " .stocks .swiper-button-prev",
+            },
+            pagination: {
+                el: '.stocks .swiper-pagination',
+            },
+        })
     }
 
 }

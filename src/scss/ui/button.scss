@@ -7,8 +7,9 @@
     &__text {
         font-size: rem(14);
         font-weight: 600;
-        line-height: calc(25 / 14);
+        // line-height: calc(25 / 14);
         line-height: rem(25);
+        letter-spacing: 0.05em;
         text-transform: uppercase;
     }
     &__arrow {

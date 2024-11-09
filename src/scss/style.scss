@@ -4,8 +4,9 @@
 @import "base/_fonts.scss";
 @import "base/_icons.scss";
 @import "base/_reset.scss";
-@import "mixins/breakpoints.scss";
-@import "mixins/media.scss";
+@import "mixins/breakpoints";
+@import "mixins/media";
+@import "mixins/fonts";
 @import "base.scss";
 
 // ui
@@ -14,4 +15,5 @@
 // modules
 @import "modules/header.scss";
 @import "modules/hero.scss";
+@import "modules/stocks.scss";
 @import "modules/footer.scss";

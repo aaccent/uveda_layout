@@ -1,0 +1,9 @@
+@mixin h1 {
+    font-size: rem(52);
+    @include adaptive-value(font-size, 28, 52, 576, $container-width);
+    font-weight: 500;
+    line-height: calc(55 / 52);
+    @include phone {
+        line-height: calc(35 / 28);
+    }
+}

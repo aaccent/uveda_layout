@@ -12,8 +12,10 @@
 
     {% include "../pages-blocks/header.njk" %}
 
-    {% block content %}
-    {% endblock %}
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     {% include "../pages-blocks/footer.njk" %}
     {% include "../pages-blocks/svg-sprites.njk" %}

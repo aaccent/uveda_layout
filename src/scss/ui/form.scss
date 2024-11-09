@@ -1,5 +1,22 @@
 .form {
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(20);
+        &:not(:last-child) {
+            margin: 0 0 rem(20);
+        }
+    }
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: rem(30);
+    }
     &__field {
+        background-color: #1F1F1F;
+        border-radius: rem(10);
+        flex-basis: calc(50% - rem(10));
+        padding: rem(15) rem(22);
         &--wide {
             flex: 0 0 100% !important;
         }
@@ -11,12 +28,18 @@
     }
 
     &__input {
+        color: var(--white);
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
         width: 100%;
+        text-transform: uppercase;
         &--textarea {
-            height: rem(105);
+            height: rem(180);
         }
         &:focus {}
-        &::placeholder {}
+        &::placeholder { opacity: 0.45 }
     }
 
     &__error-text {
@@ -142,19 +165,53 @@
             color: var(--red);
         }
     }
-
+    &__agreement {
+        color: rgba($color: #FFFFFF, $alpha: 0.45);
+        font-size: rem(14);
+        font-weight: 400;
+        line-height: calc(20 / 14);
+        letter-spacing: 0.05em;
+        max-width: rem(420);
+        a {
+            color: var(--white);
+        }
+    }
+    @include desktop {
+        // &__footer {
+        //     flex-wrap: wrap;
+        // }
+    }
     @media screen and (min-width: 993px) {
         &__file {
             max-width: rem(420);
         }
     }
+    @include tablet {
+        &__body, &__footer {
+            flex-direction: column;
+        }
+        &__footer {
+            align-items: flex-start;
+        }
+    }
     @include phone {
+        &__body {
+            gap: rem(10);
+        }
+        &__footer {
+            align-items: stretch;
+            gap: rem(25);
+        }
+        &__field {
+            border-radius: rem(8);
+            padding-left: rem(20);
+            padding-right: rem(20);
+        }
         &__input {
-            font-size: rem(16);
+            font-size: rem(12);
             line-height: calc(20 / 16);
-            padding-bottom: rem(15);
             &--textarea {
-                height: rem(80);
+                height: rem(140);
             }
         }
     }

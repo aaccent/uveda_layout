@@ -72,6 +72,13 @@ body {
 
 /// если flex-direction: column, то такой же трюк проделываем с min-height
 
+.main {
+    & > *:not(:last-child) {
+        margin: 0 0 rem(180);
+        @include adaptive-value(margin-bottom, 80, 180, 576, $container-width)
+    }
+}
+
 .sections-group {
     --padding: 11.25rem;
     padding: var(--padding) 0;
@@ -95,9 +102,6 @@ body {
     }
 
     &__title {
-        // font-size: rem(52);
-        // font-weight: 500;
-        // line-height: calc(55 / 52);
         @include h1()
     }
 

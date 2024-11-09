@@ -1,0 +1,28 @@
+<section class="hero section">
+    <div class="hero__swiper swiper">
+        <div class="swiper-wrapper">
+            {% for item in range(4) %}
+                <div class="hero__swiper-slide hero-slide swiper-slide">
+                    <img src="./images/hero.png" alt="hero" class="hero-slide__image">
+                    <div class="hero-slide__tag">Официальный дистрибьютор</div>
+                    <div class="hero-slide__title">Продажа запчастей и комплектующих для грузовой прицепной техники и грузовиков</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="hero__swiper-controls swiper-controls">
+            {# <div class="container"> #}
+                <div class="swiper-button-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="swiper-pagination"></div> 
+                <div class="swiper-button-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="white" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            {# </div> #}
+        </div>
+    </div>
+</section>

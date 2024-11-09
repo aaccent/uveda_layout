@@ -63,6 +63,14 @@ function closePopup(popup = null) {
     }, {once: true})
 }
 
+function getVhUnit() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', getVhUnit);
+getVhUnit()
+
 window.onload = function() {
 
     // breakpoints
@@ -195,7 +203,7 @@ window.onload = function() {
         if (e.matches) {
             return
         }
-        
+
         if (headerEl.classList.contains("_form-show")) {
             searchBoxEl.style.justifyContent = "flex-start"
             searchBlockEl.style.cssText = `
@@ -364,4 +372,21 @@ window.onload = function() {
             closePopup()
         }
     })
+
+    if (window.Swiper) {
+        // hero
+        let heroSwiper = new Swiper(".hero__swiper", {
+            slidesPerView: 1,
+            speed: 800,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        })
+    }
+
 }

@@ -3,13 +3,20 @@
 {% set title = "Главная страница" %}
 
 {% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.min.css">
 {% endblock %}
 
 {% block content %}
-    
+    <div class="container">
+        {% include "pages-blocks/hero.njk" %}
+        <div class="sections-group">
+            
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
     {{ super() }}
 {% endblock %}

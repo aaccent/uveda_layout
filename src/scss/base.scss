@@ -2,7 +2,12 @@
     --white: #FFFFFF;
     --primary: #0079C4;
     --text-color: #09090A;
-    --background: #141414;
+    --background-color: #141414;
+    --dropdown-z-index: 12;
+    --header-z-index: 13;
+    --popup-z-index: 15;
+    --cookies-z-index: 18;
+    --preloader-z-index: 20;
     // --init-width: 1920;
     // --init-width_units: calc(var(--init-width) * 1px);
     // @media screen and (min-width: 1920px) {
@@ -34,12 +39,18 @@
 
 
 body {
-    background-color: var(--background);
-    color: var(--white);
+    // background-color: var(--background-color);
+    background-color: var(--white);
+    // color: var(--white);
+    color: var(--text-color);
     font-family: "Involve", "sans-serif";
+    padding: rem(80) 0 0;
     &._lock {
         height: 100%;
         overflow: hidden;
+    }
+    @include phone {
+        padding-top: rem(65);
     }
 }
 
@@ -72,36 +83,16 @@ body {
 
 /// если flex-direction: column, то такой же трюк проделываем с min-height
 
-.main {
-    & > *:not(:last-child) {
-        margin: 0 0 rem(180);
-        @include adaptive-value(margin-bottom, 80, 180, 576, $container-width)
-    }
-}
-
-.sections-group {
-    --padding: 11.25rem;
-    padding: var(--padding) 0;
-    @include adaptive-value(--padding, 80, 180, 576, $container-width);
-    & > * {
-        margin: 0 0 rem(180);
-        @include adaptive-value(margin-bottom, 80, 180, 576, $container-width)
-    }
-    &--white {
-        background-color: var(--white);
-        color: var(--text-color);
-    }
-}
-
 .section {
+    --py: 11.25rem;
+    padding: var(--py) 0;
+    @include adaptive-value(--py, 80, 180, 576, $container-width);
     &__header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: rem(20);
-        &:not(:last-child) {
-            margin: 0 0 rem(50);
-        }
+        margin: 0 0 rem(50)
     }
 
     &__title {
@@ -109,6 +100,15 @@ body {
     }
 
     &__body {
+    }
+
+    &--black {
+        background-color: var(--background-color);
+        color: var(--white);
+    }
+    &--black + &--black,
+    &:not(.section--black) + &:not(.section--black) {
+        margin: calc(-1 * var(--py)) 0 0;
     }
 
     @include phone {

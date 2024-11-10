@@ -23,21 +23,21 @@ const isMobile = {
     }
 }; 
 
-const lockPaddingElements = document.querySelector("header");
+const lockPaddingElements = document.querySelector(".header__wrapper");
 
 function lockBody() {
     let paddingValue = window.innerWidth - document.documentElement.clientWidth;
     if (lockPaddingElements && paddingValue) {
         lockPaddingElements.style.paddingRight = paddingValue + "px"
     }
-    document.body.classList.add("body_lock")
+    document.body.classList.add("_lock")
 }
 
 function unlockBody () {
     if (lockPaddingElements) {
         lockPaddingElements.style.paddingRight = ""
     }
-    document.body.classList.remove("body_lock")
+    document.body.classList.remove("_lock")
 }
 
 function openPopup(popup = undefined) {
@@ -68,8 +68,17 @@ function getVhUnit() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+function getScrollWidthValue() {
+    let paddingValue = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', `${paddingValue / 16}rem`);
+}
+
 window.addEventListener('resize', getVhUnit);
 getVhUnit()
+
+getScrollWidthValue()
+// document.addEventListener("DOMContentLoaded", () => {
+// })
 
 window.onload = function() {
 
@@ -89,12 +98,47 @@ window.onload = function() {
     const searchButtonEl = searchBoxEl.querySelector(".header__search-button")
     const closeSearchButtonEl = searchBoxEl.querySelector(".header__close-search")
 
+    function documentActions(e) {
+        const targetEl = e.target;
+    
+        if (
+            !targetEl.closest(".header__search") 
+            && headerEl.classList.contains("_form-show")
+            && window.innerWidth > 1080
+        ) {
+            closeSearchButtonEl.click()
+        }
+    }
+
+    document.addEventListener("click", documentActions)
+    // Header
+    const callback = function(entries, observer) {
+        // элемент в видимой части экрана
+        // в данном случае это headerEl
+        if (entries[0].isIntersecting) {
+            headerEl.classList.add("header--black")
+        } else {
+            // элемент пропал с видимой части экрана
+            headerEl.classList.remove("header--black")
+        }
+    }
+
+    const headerObserver = new IntersectionObserver(callback)
+    headerObserver.observe(headerEl)
+
     searchButtonEl.addEventListener("click", e => {
         const wrapperEl = e.currentTarget.closest(".header__inner-wrapper")
 
         if (window.innerWidth <= 1080) {
-            headerEl.classList.toggle("_form-show")
+            if (!burgerMenuEl.classList.contains("header__burger--open")) {
+                if (headerEl.classList.contains("_form-show")) {
+                    unlockBody()
+                } else {
+                    lockBody()
+                }
+            }
 
+            headerEl.classList.toggle("_form-show")
         } else if (!headerEl.classList.contains("_form-show")) {
             headerEl.classList.add("_form-show")
             searchBoxEl.style.justifyContent = "flex-start"
@@ -106,7 +150,7 @@ window.onload = function() {
         }
     })
 
-    closeSearchButtonEl.addEventListener("click", e => {
+    closeSearchButtonEl.addEventListener("click", () => {
         const menuBlockEl = menuEl.closest(".header__main");
 
         if (headerEl.classList.contains("_form-show")) {
@@ -123,19 +167,6 @@ window.onload = function() {
             }, { once: true })
         }
     })
-    // const callback = function(entries, observer) {
-    //     // элемент в видимой части экрана
-    //     // в данном случае это headerEl
-    //     if (entries[0].isIntersecting) {
-    //         headerEl.classList.remove("header_scroll")
-    //     } else {
-    //         // элемент пропал с видимой части экрана
-    //         headerEl.classList.add("header_scroll")
-    //     }
-    // }
-
-    // const headerObserver = new IntersectionObserver(callback)
-    // headerObserver.observe(headerEl)
 
     burgerMenuEl.addEventListener("click", () => {
         if (burgerMenuEl.classList.contains("header__burger--open")) {
@@ -146,7 +177,7 @@ window.onload = function() {
             })
         } else {
             lockBody()
-            window.scrollTo(0,0)
+            // window.scrollTo(0,0)
         }
         
         burgerMenuEl.classList.toggle("header__burger--open")

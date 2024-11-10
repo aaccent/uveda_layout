@@ -1,8 +1,9 @@
 .hero {
-    --mb: 5rem;
+    // --mb: 5rem;
     --padding: 3.75rem;
     @include adaptive-value(--padding, 20, 60, 576, $container-width);
-    @include adaptive-value(--mb, 20, 80, 576, $container-width);
+    // @include adaptive-value(--mb, 20, 80, 576, $container-width);
+    padding: 0 0 rem(80);
     &__swiper {
         border-radius: rem(20);
         overflow: hidden;
@@ -18,9 +19,9 @@
         bottom: var(--padding);
         z-index: 2;
     }
-    &:not(:last-child) {
-        margin: 0 0 var(--mb);
-    }
+    // &:not(:last-child) {
+    //     margin: 0 0 var(--mb);
+    // }
 
     @include min-gap {
 
@@ -32,7 +33,10 @@
         }
     }
     @include phone {
-        border-radius: rem(15);
+        padding-bottom: rem(20);
+        &__swiper {
+            border-radius: rem(15);
+        }
     }
 }
 .hero-slide {

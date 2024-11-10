@@ -1,0 +1,115 @@
+.trust-us {
+
+    &__title {
+        font-size: rem(210);
+        @include adaptive-value(font-size, 48, 210, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(200 / 210);
+        white-space: nowrap;
+    }
+
+    &__body {
+
+    }
+
+    &__tab {
+    }
+
+    .tab__content {
+        margin: 0 calc(-1 * var(--container-padding));
+    }
+
+    &__swiper {
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+    }
+
+    &__card {
+        aspect-ratio: 1;
+        background-color: #F5F6F8;
+        border-radius: rem(15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: rem(340);
+    }
+
+    &__card-year {
+        background-color: var(--primary);
+        border-radius: rem(5);
+        color: var(--white);
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        padding: rem(5) rem(10);
+        position: absolute;
+        top: rem(15);
+        right: rem(15);
+        text-transform: uppercase;
+    }
+
+    &__card-logo {
+        max-width: calc(100% - rem(90));
+    }
+
+    @include phone {
+        &__title {
+            line-height: calc(50 / 48);
+        }
+
+        &__card {
+            width: rem(280);
+        }
+
+        &__card-yers {
+            padding-left: rem(8);
+            padding-right: rem(8);
+            top: rem(10);
+            left: rem(10);
+        }
+    }
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    gap: rem(60);
+    @include adaptive-value(gap, 25, 60, 576, $container-width);
+    &__page {
+
+        &--active {
+        }
+    }
+
+    &__nav {
+        border: 1px solid #DBDBEE;
+        border-radius: rem(20);
+        display: flex;
+        align-self: center;
+        gap: rem(10);
+        padding: rem(10);
+    }
+
+    &__button {
+        background-color: #F5F6F8;
+        color: var(--text-color);
+        padding: rem(18) rem(25);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+        &--active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+    }
+
+    @include phone {
+        &__nav {
+            padding: rem(5);
+        }
+        &__button {
+            padding-top: rem(16);
+            padding-bottom: rem(16);
+        }
+    }
+}

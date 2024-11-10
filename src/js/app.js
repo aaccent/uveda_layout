@@ -433,6 +433,22 @@ window.onload = function() {
                 el: ".products .swiper-pagination",
             },
         })
+        // partners 
+        new Swiper(".trust-us__swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            freeMode: true,
+            // freeMode: {
+            //     enabled: true,
+            //     sticky: true,
+            //   },
+            breakpoints: {
+                577: {
+                    spaceBetween: 15,
+
+                }
+            },
+        })
     }
 
 }

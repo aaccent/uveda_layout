@@ -94,7 +94,6 @@ body {
 }
 
 .section {
-
     &__header {
         display: flex;
         align-items: center;
@@ -134,18 +133,21 @@ body {
 
     }
     .swiper-button-prev, .swiper-button-next {
-        position: static;
-        margin: 0;
         color: inherit;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 0;
         padding: 0;
+        position: static;
         width: auto;
         height: auto;
-        transition: background-color 0.15s ease 0s;
+        transition: color 0.2s ease 0s;
         &::after {
             content: none;
+        }
+        @include ishover {
+            color: var(--primary);
         }
     }
     .swiper-pagination {

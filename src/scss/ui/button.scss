@@ -20,6 +20,10 @@
     &--primary {
         background-color: var(--primary);
         color: var(--white);
+        transition: background-color 0.2s ease 0s;
+        @include ishover {
+            background-color: #01609B;
+        }
     }
     @include phone {
         padding: rem(12.5) rem(20);

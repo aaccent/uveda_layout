@@ -424,7 +424,7 @@ window.onload = function() {
 
     if (window.Swiper) {
         // hero
-        let heroSwiper = new Swiper(".hero__swiper", {
+        new Swiper(".hero__swiper", {
             slidesPerView: 1,
             speed: 800,
             loop: true,
@@ -461,7 +461,7 @@ window.onload = function() {
                 prevEl: " .stocks .swiper-button-prev",
             },
             pagination: {
-                el: "stocks .swiper-pagination",
+                el: ".stocks .swiper-pagination",
             },
         })
         //products

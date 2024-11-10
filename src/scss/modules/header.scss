@@ -63,6 +63,10 @@
         line-height: calc(25 / 14);
         text-transform: uppercase;
         white-space: nowrap;
+        transition: opacity 0.2s ease 0s;
+        @include ishover {
+            opacity: 0.65;
+        }
     }
     &__menu-arrow {
         svg {
@@ -90,6 +94,10 @@
         justify-content: center;
         flex: 0 0 rem(61);
         padding: rem(16);
+        opacity: background-color 0.2s ease 0s;
+        @include ishover {
+            border-color: var(--white);
+        }
         // min-width: rem(61);
     }
     &__search-button {
@@ -107,6 +115,7 @@
         flex-grow: 1;
         padding: 0 rem(15);
         input {
+            color: inherit;
             font-size: rem(16);
             font-weight: 400;
             line-height: calc(25 / 16);
@@ -180,20 +189,19 @@
         background-color: var(--white);
         color: var(--text-color);
         flex-shrink: 0;
+        transition: backgroud-color 0.2s ease 0s;
+        @include ishover {
+            background-color: rgba($color: #FFFFFF, $alpha: 0.85);
+        }
     }
     &__burger {
         background-color: var(--white);
         border-radius: rem(8);
-        // box-sizing: content-box;
+        box-sizing: border-box;
         display: none;
         cursor: pointer;
-        position: relative;
-        // padding: 18px 12px;
-        // width: 42px;
-        // height: 28px;
-
-        box-sizing: border-box;
         padding: 0;
+        position: relative;
         width: rem(60);
         height: rem(60);
         &:before, &:after {

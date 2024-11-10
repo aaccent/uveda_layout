@@ -121,6 +121,12 @@
         font-size: rem(18);
         font-weight: 600;
         line-height: calc(25 / 18);
+        transition: color 0.2s ease 0s;
+    }
+    @include ishover {
+        .product__name {
+            color: var(--primary);
+        }
     }
     @include phone {
         aspect-ratio: calc(253 / 380);

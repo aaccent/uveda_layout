@@ -58,6 +58,7 @@
         gap: rem(10);
         font-weight: 600;
         text-transform: uppercase;
+        transition: color 0.2s ease 0s;
         &:not(:first-child) {
             margin-top: rem(25);
         }
@@ -69,6 +70,9 @@
         }
         object {
             transform: rotate(90deg);
+        }
+        @include ishover {
+            color: var(--primary)
         }
     }
     &--hide {

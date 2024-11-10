@@ -100,6 +100,14 @@
         &--active {
             background-color: var(--primary);
             color: var(--white);
+            @include ishover {
+                background-color: #01609B;
+            }
+        }
+        @include ishover {
+            &:not(.tab__button--active) {
+                color: var(--primary);
+            }
         }
     }
 

@@ -74,6 +74,9 @@
     @include gap {
         &__content {
             flex-direction: column;
+            & > * {
+                flex-basis: auto;
+            }
         }
         &__steps {
             gap: rem(50)

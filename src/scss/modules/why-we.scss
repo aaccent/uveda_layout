@@ -1,0 +1,78 @@
+.why-we {
+
+    &__header {
+        &:not(:last-child) {
+            margin-bottom: rem(60);
+        }
+    }
+
+    &__title {
+        flex-basis: rem(430);
+    }
+
+    &__advantages {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap: rem(16);
+    }
+
+    &__advantage {
+        background-image: url(../images/advantage-bg.svg);
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: 31.25% auto;
+        background-color: #1F1F1F;
+        border-radius: rem(15);
+        position: relative;
+        padding: rem(40) rem(40) rem(35);
+        padding: calc(40 / 496 * 100%) calc(40 / 496 * 100%) calc(35 / 496 * 100%);
+    }
+
+    &__advantage-icon {
+        aspect-ratio: 1;
+        background-color: var(--white);
+        border-radius: rem(10);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // width: rem(60);
+        // height: rem(60);
+        width: calc(60 / 416 * 100%);
+        svg {
+            width: 50% !important;
+            height: auto;
+        }
+    }
+
+    &__advantage-name {
+        font-size: rem(16);
+        font-weight: 500;
+        line-height: calc(25 / 16);
+        letter-spacing: 0.05em;
+        padding-top: calc(155 / 416 * 100%);
+        max-width: rem(290);
+    }
+    @include gap {
+        &__advantages {
+            margin: 0 auto;
+            max-width: rem(420);
+        }
+    }
+    @include phone {
+        &__advantage {
+            background-size: calc(84 / 340 * 100%) auto;
+            padding: rem(20);
+        }
+        &__advantage-icon {
+            width: rem(50);
+            height: rem(50);
+        }
+        &__advantage-name {
+            font-size: rem(14);
+            line-height: calc(20 / 14);
+            padding-top: calc(60 / 300 * 100%);
+        }
+    }
+}
+

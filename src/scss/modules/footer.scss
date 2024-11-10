@@ -1,5 +1,275 @@
+.contact-info {
+    &__box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(15);
+    }
+    &__item {
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+    &__phone {
+        font-size: rem(22);
+        font-weight: 500;
+        line-height: calc(30 / 22);
+        text-transform: uppercase;
+    }
+    &__socials {
+        &:not(:first-child) {
+            margin: rem(80) 0 0;
+        }
+    }
+}
+
+.socials {
+    display: flex;
+    gap: rem(10);
+    &__item {
+
+    }
+    &__link {
+        background-color: #1F1F1F;
+        border-radius: rem(10);
+        color: var(--primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(60);
+        height: rem(60);
+    }
+    @include phone {
+
+    }
+}
+
+
 .footer {
+    background-color: rgba($color: #080808, $alpha: 0.3);
+    padding: rem(80) 0;
     &__container {
-        
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(40);
+        &:not(:last-child) {
+            margin: 0 0 rem(40);
+        }
+    }
+
+    &__logo {
+    }
+
+    &__to-top {
+        background-color: #1F1F1F;
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        padding: rem(10) rem(15);
+        span {
+            font-size: rem(14);
+            font-weight: 600;
+            line-height: calc(25 / 14);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    }
+
+    &__main,
+    &__bottom {
+        display: grid;
+        grid-template-columns: rem(240) rem(240) 1fr;
+        column-gap: rem(144);
+        @include adaptive-value(column-gap, 60, 140, 576, $container-width)
+    }
+    &__main {
+        border-top: 1px solid #303031;
+        border-bottom: 1px solid #303031;
+        padding: rem(40) 0;
+        &:not(:last-child) {
+            margin: 0 0 rem(20);
+        }
+    }
+
+    &__contact-info,
+    &__policy {
+        justify-self: end;
+    }
+
+    &__catalog {
+    }
+
+    &__catalog-header {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+    }
+
+    &__catalog-title {
+        font-size: rem(18);
+        font-weight: 600;
+        line-height: calc(25 / 18);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    &__catalog-list {
+        padding: rem(15) 0 0;
+    }
+
+    &__catalog-item,
+    &__menu-item {
+        &:not(:last-child) {
+            margin: 0 0 rem(15);
+        }
+    }
+
+    &__catalog-link {
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    &__menu {
+    }
+
+    &__menu-list {
+    }
+
+    &__menu-item {
+    }
+
+    &__menu-link {
+        font-size: rem(18);
+        font-weight: 600;
+        line-height: calc(25 / 18);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    &__bottom {
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-left: auto;
+    }
+
+    &__copyright {
+    }
+
+    &__aaccent {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        span {
+            text-transform: none;
+        }
+    }
+    @include min_tablet {
+        &__contact-info {
+            .contact-info__box {
+                align-items: flex-end;
+            }
+        }
+    }
+    @include tablet {
+        &__main {
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-flow: row;
+            row-gap: rem(30);
+            column-gap: rem(40);
+        }
+        &__contact-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            column-gap: rem(40);
+            grid-column: 1 / 3;
+            justify-self: stretch;
+            .contact-info__socials {
+                margin-top: 0;
+            }
+        }
+        &__socials {
+            margin-top: 0;
+        }
+        &__bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: rem(20);
+        }
+    }
+    @include min_phone {
+        &__catalog-arrow {
+            display: none;
+        }
+    }
+    @include phone {
+        padding: rem(35) rem(20) rem(20);
+        &__top, &__main {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__to-top {
+            padding-left: rem(12);
+            padding-right: rem(12);
+            span {
+                font-size: rem(12);
+                font-weight: 600;
+                line-height: calc(20 / 12);
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+        }
+        &__main {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: rem(25);
+            padding: rem(25) 0;
+        }
+        &__catalog-header {
+
+        }
+        &__catalog-title {
+            opacity: 1;
+        }
+        &__catalog-body {
+            height: 0;
+            overflow: hidden;
+        }
+        &__catalog-list {
+            padding-top: rem(20);
+            opacity: 0.45;
+        }
+        &__menu-item {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__contact-info {
+            display: block;
+            margin: rem(35) 0 0;
+            .contact-info__socials {
+                margin: rem(40) 0 0;
+            }
+        }
+        &__bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: rem(15);
+        }
     }
 }

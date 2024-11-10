@@ -1,0 +1,33 @@
+.logo {
+    display: flex;
+    align-self: center;
+    gap: rem(10);
+    margin-right: rem(25);
+    &__title {
+        font-size: rem(28);
+        font-weight: 600;
+        line-height: calc(30/28);
+        text-transform: uppercase;
+    }
+    &__desc {
+        font-size: rem(12);
+        font-weight: 400;
+        line-height: calc(14 / 12);
+        text-transform: lowercase;
+    }
+    @include phone {
+        gap: rem(9);
+        &__title {
+            font-size: rem(26);
+        }
+        &__desc {
+            font-size: rem(11);
+        }
+    }
+    @media screen and (max-width: 379px) { 
+        &__desc {
+            display: none;
+        }
+        
+    }
+}

@@ -41,6 +41,7 @@
 
 .article {
     &__text {
+        color: #09090A;
         font-size: rem(16);
         font-weight: 400;
         line-height: calc(25 / 16);
@@ -53,13 +54,18 @@
     }
     &__more {
         display: none;
-        align-items: baseline;
+        align-items: center;
         gap: rem(10);
         font-weight: 600;
-        letter-spacing: 0.05em;
         text-transform: uppercase;
         &:not(:first-child) {
             margin-top: rem(25);
+        }
+        span {
+            font-size: rem(14);
+            font-weight: 600;
+            line-height: calc(25 / 14);
+            letter-spacing: 0.05em;
         }
         object {
             transform: rotate(90deg);

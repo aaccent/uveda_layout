@@ -83,6 +83,10 @@ body {
     --padding: 11.25rem;
     padding: var(--padding) 0;
     @include adaptive-value(--padding, 80, 180, 576, $container-width);
+    & > * {
+        margin: 0 0 rem(180);
+        @include adaptive-value(margin-bottom, 80, 180, 576, $container-width)
+    }
     &--white {
         background-color: var(--white);
         color: var(--text-color);
@@ -108,11 +112,6 @@ body {
     &__body {
     }
 
-    & + .section,
-    & + .sections-group {
-        margin: rem(180) 0 0;
-        @include adaptive-value(margin-top, 80, 180, 576, $container-width)
-    }
     @include phone {
         &__header {
             &:not(:last-child) {
@@ -190,4 +189,8 @@ body {
     svg {
         transform: translate(rem(-3), 0) rotate(-180deg);
     }
+}
+
+._transparent {
+    opacity: 0.45;
 }

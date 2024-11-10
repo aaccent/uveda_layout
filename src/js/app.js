@@ -97,6 +97,15 @@ window.onload = function() {
     const searchBlockEl = searchBoxEl.querySelector(".header__search-block")
     const searchButtonEl = searchBoxEl.querySelector(".header__search-button")
     const closeSearchButtonEl = searchBoxEl.querySelector(".header__close-search")
+    const consultationButtonEls = headerEl.querySelectorAll(".header__button")
+
+    const consultationPopupEl = document.querySelector(".popup--consultation");
+
+    Array.from(consultationButtonEls).forEach(buttonEl => {
+        buttonEl.addEventListener("click", e => {
+            openPopup(consultationPopupEl)
+        })
+    })
 
     function documentActions(e) {
         const targetEl = e.target;

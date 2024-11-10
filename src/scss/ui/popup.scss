@@ -1,5 +1,5 @@
 .popup {
-    background-color: rgba($color: $black, $alpha: 0.5);
+    background-color: rgba($color: #000000, $alpha: 0.3);
     position: fixed;
     top: 0;
     left: 0;
@@ -9,34 +9,40 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease 0s;
-    z-index: 15;
+    z-index: var(--popup-z-index);
     &__container {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
-        padding: 1.5rem;
+        padding: rem(15);
         min-height: 100%;
     }
     &__content {
-        background-color: $white;
+        border-radius: rem(20);
+        background-color: var(--white);
+        padding: rem(55) rem(60);
         position: relative;
-        max-width: rem(890);
+        max-width: rem(525);
         width: 100%;
+        max-height: rem(770);
         transition: all 0.3s ease 0s;
     }
     &__close { 
         position: absolute;
-        top: rem(10);
-        right: rem(10);
-        padding: 1.25rem;
+        top: rem(25);
+        right: rem(25);
+        // padding: 1.25rem;
+        width: rem(23.46);
+        height: rem(23.46);
         &::after, &::before {
-            background-color: $primary-color;
+            background-color: rgba($color: #09090A, $alpha: 0.55);
             content: "";
             position: absolute;
             top: 50%;
             left: 50%;
-            width: rem(16);
-            height: rem(2)
+            width: 100%;
+            height: rem(2);
+            // opacity: 0.45;
         }
         &::before {
             transform: translate(-50%, -50%) rotate(45deg);
@@ -44,9 +50,97 @@
         &::after {
             transform: translate(-50%, -50%) rotate(-45deg);
         }
+        @include ishover {
+            &::after, &::before {
+                background-color: var(--primary);
+                opacity: 1;
+            }
+        }
     }
     &__header {
         &:not(:last-child) {
+            margin: 0 0 rem(40);
+        }
+    }
+    &__title {
+        font-size: rem(32);
+        font-weight: 500;
+        line-height: calc(35 / 32);
+        &:not(:last-child) {
+            margin: 0 0 calc(20 / 32 * 1em);
+        }
+    }
+    &__subtitle {
+        font-size: rem(16);
+        font-weight: 500;
+        line-height: calc(25 / 16);
+        opacity: 0.75;
+    }
+    .form {
+        &__field {
+            background-color: #F5F6F8;
+            &:not(:last-child) {
+                margin: 0 0 rem(15);
+            }
+        }
+        &__input {
+            font-weight: 500;
+            &--textarea {
+                height: rem(180);
+            }
+        }
+        &__submit {
+            width: 100%;
+        }
+        &__agreement {
+            color: rgba($color: var(--text-color), $alpha: 0.55);
+            margin: rem(40) 0 0;
+            a {
+                color:  var(--primary);
+            }
+        }
+    }
+    &__characteristics {
+        .characteristic {
+            font-size: rem(16);
+            font-weight: 400;
+            line-height: calc(25 / 16);
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            &__name, &__value {
+                background-color: var(--white);
+                position: relative;
+                z-index: 1;
+            }
+            &__name {
+                color: rgba($color: #09090A, $alpha: 0.55);
+                padding-right: rem(8);
+                order: 0;
+            }
+            &__value {
+                font-size: 500;
+                padding-left: rem(8);
+                order: 2;
+            }
+            &::after {
+                border: 1px dashed #BFBFD9;
+                content: '';
+                position: absolute;
+                top: 1em;
+                right: 0;
+                width: 100%;
+            }
+        }
+    }
+    &__characteristic-item {
+        &:not(:last-child) {
+            margin: 0 0 rem(15);
+        }
+    }
+    &--characteristics {
+        .popup__content {
+            max-width: rem(700);
         }
     }
     &--open {
@@ -55,22 +149,48 @@
     }
     @include phone {
         &__container {
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-top: rem(60);
+            padding-bottom: rem(60);
+        }
+        &__content {
+           padding: rem(25) rem(25) rem(20);
         }
         &__close {
-            background-color: rgba($color: $white, $alpha: 0.15);
-            border-radius: 50%;
-            padding: 0;
-            width: rem(50);
-            height: rem(50);
             top: auto;
             right: 0;
             bottom: calc(100% + rem(15));
             &::before, &::after {
-                background-color: $white;
-                width: rem(14);
-                height: rem(1.5);
+                background-color: var(--white);
+            }
+        }
+        &__header {
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
+        }
+        &__title {
+            font-size: rem(24);
+            line-height: calc(30 / 24);
+        }
+        &__subtitle {
+            font-size: rem(14);
+            line-height: calc(24 / 14);
+        }
+        .form {
+            &__field {
+                &:not(:last-child) {
+                    margin-bottom: rem(10);
+                }
+            }
+            &__agreement {
+                font-size: rem(12);
+                line-height: calc(20 / 12);
+                margin-top: rem(25);
+            }
+        }
+        &__characteristic-item {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
             }
         }
     }

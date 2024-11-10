@@ -18,6 +18,67 @@
     </main>
 
     {% include "../pages-blocks/footer.njk" %}
+    <div class="popup popup popup--consultation">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Получите бесплатную консультацию специалиста</div>
+                    <div class="popup__subtitle">Менеджер свяжется с вами в ближайшее время</div>
+                </div>
+                <div class="popup__body">
+                    <form action="#" method="POST" class="form">
+                        <div class="form__field">
+                            <label for=""></label>
+                            <input type="text" class="form__input" placeholder="Ваше имя">
+                        </div>
+                        <div class="form__field">
+                            <label for=""></label>
+                            <input type="text" class="form__input" placeholder="+7 (999)-999-99-99">
+                        </div>
+                        <div class="form__field">
+                            <textarea class="form__input form__input--textarea" name="comment" placeholder="Ваше сообщение"></textarea>
+                        </div>
+                        <button class="form__submit button button--primary">
+                            <span class="button__text">Оставить заявку</span>
+                            <div class="button__arrow">
+                                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                            </div>
+                        </button>
+                        <div class="form__agreement">Нажимая кнопку «Оставить заявку», вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="popup popup--open popup--characteristics">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Характеристики</div>
+                </div>
+                <div class="popup__body">
+                    <ul class="popup__characteristics">
+                        {% set characteristics = [
+                            { name: "Бренд", value: "Yonglitai" },
+                            { name: "Модель", value: "45144-8600001" },
+                            { name: "Производительность", value: "73 м3/ч" },
+                            { name: "Частота вращения", value: "1300 об/мин" }
+                        ] %}
+                        {% for i in range(3) %}
+                            {% for characteristic in characteristics %}
+                                <li class="popup__characteristic-item characteristic">
+                                    <div class="characteristic__name">{{ characteristic.name }}</div>
+                                    <div class="characteristic__value">{{ characteristic.value }}</div>
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     {% include "../pages-blocks/svg-sprites.njk" %}
     {% block scripts %}
         <script src="js/app.min.js"></script>

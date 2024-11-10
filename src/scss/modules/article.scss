@@ -1,0 +1,99 @@
+.info {
+
+    &__body {
+        background-color: #F5F6F8;
+        border-radius: rem(20);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: rem(60);
+        // padding: rem(55) rem(60);
+        padding: calc(55 / 1520 * 100%) calc(60 / 1520 * 100%);
+    }
+
+    &__title {
+        flex: 0 1 rem(540);
+    }
+
+    &__article {
+        // flex-basis: 75%;
+        max-width: rem(692);
+    }
+    
+    @include tablet {
+        &__body {
+            border-radius: rem(15);
+            flex-direction: column;
+            gap: rem(40);
+        }
+        &__title {
+            flex: 0 1 auto;
+        }
+    }
+    
+    @include phone {
+        &__body {
+            gap: rem(20);
+            padding: rem(20);
+        }
+    }
+}
+
+.article {
+    &__text {
+        font-size: rem(16);
+        font-weight: 400;
+        line-height: calc(25 / 16);
+        max-height: calc(rem(25) * 10 + rem(25));
+        opacity: 0.55;
+        overflow: hidden;
+        p + p {
+            margin-top: rem(25);
+        }
+    }
+    &__more {
+        display: none;
+        align-items: baseline;
+        gap: rem(10);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        &:not(:first-child) {
+            margin-top: rem(25);
+        }
+        object {
+            transform: rotate(90deg);
+        }
+    }
+    &--hide {
+        .article__more {
+            display: flex;
+
+        }
+    }
+    &--open {
+        .article__text {
+            max-height: none;
+        }
+        .article__more {
+            object {
+                transform: rotate(0deg);
+            }
+        }
+    }
+    @include phone {
+        &__text {
+            font-size: rem(14);
+            line-height: calc(20 / 14);
+            max-height: calc(rem(20) * 11 + rem(15));
+            p + p {
+                margin-top: rem(15);
+            }
+        }
+        &__more {
+            &:not(:first-child) {
+                margin-top: rem(20);
+            }
+        }
+    }
+}

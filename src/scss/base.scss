@@ -108,6 +108,11 @@ body {
     &__body {
     }
 
+    & + .section,
+    & + .sections-group {
+        margin: rem(180) 0 0;
+        @include adaptive-value(margin-top, 80, 180, 576, $container-width)
+    }
     @include phone {
         &__header {
             &:not(:last-child) {

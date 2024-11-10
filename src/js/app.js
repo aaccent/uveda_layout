@@ -373,6 +373,55 @@ window.onload = function() {
         }
     })
 
+        // article text
+        if (document.querySelector(".article")) {
+            const articleEl = document.querySelector(".article");
+            const articleTextEl = articleEl.querySelector(".article__text");
+            const readMoreButtonEl = articleEl.querySelector(".article__more");
+            const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
+        
+            function changeElemHeight(elem) {
+                const buttonTextEl = elem.querySelector("span")
+                const className = elem.classList[1];
+                if (elem.classList.contains(className + "--open")) {
+                    elem.classList.remove(className + "--open")
+                    buttonTextEl.innerHTML = "Читать полностью"
+                } else {
+                    elem.classList.add(className + "--open")
+                    buttonTextEl.innerHTML = "Свернуть текст"
+                }
+            }
+        
+            function checkElemHeight(elem) {
+                const className = elem.classList[1];
+                const textEl = articleTextEl;
+                const readMoreEl = readMoreButtonEl;
+        
+                if (textEl.offsetHeight < textEl.scrollHeight) {
+                    !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
+                } else {
+                    if (!elem.classList.contains(className + "--open")) {
+                        // elem.className = className
+                        elem.classList.remove(`${className}--hide`);
+                    } else if (textEl.offsetHeight <= maxHeight) {
+                        // elem.className = className
+                        elem.classList.remove(`${className}--hide`);
+                        elem.classList.remove(`${className}--open`);
+                        readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+                    }
+                } 
+            }
+    
+        
+            checkElemHeight(articleEl);
+        
+            readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
+        
+            window.addEventListener("resize", () => {
+                checkElemHeight(articleEl)
+            })
+        }
+
     if (window.Swiper) {
         // hero
         let heroSwiper = new Swiper(".hero__swiper", {

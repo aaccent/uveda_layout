@@ -143,6 +143,49 @@
                 }
             }
         }
+        table {
+            border-collapse: collapse;
+            font-size: rem(16);
+            font-weight: 400;
+            line-height: calc(25 / 16);
+            margin: rem(40) 0 0;
+            table-layout: fixed;
+            width: 100%;
+            caption {
+                display: none
+            }
+            thead {
+                background-color: #F5F6F8;
+                color: var(--text-color);
+                font-weight: 500;
+                th {
+                    padding: rem(20) 0;
+                    text-align: left;
+                    &:first-child {
+                        padding: 0 0 0 rem(20);
+                    }
+                    &:last-child {
+                        padding: 0 rem(20) 0 0;
+                    }
+                }
+            }
+            tbody {
+                opacity: 0.75;
+                th, td {
+                    padding: rem(25) rem(20) 0 0;
+                }
+                th {
+                    font-weight: 400;
+                    padding-left: rem(20);
+                    text-align: left;
+                }
+                td {
+                    &:last-child {
+                        padding-right: rem(0);
+                    }
+                }
+            }
+        }
     }
     &__aside {
         flex-shrink: 0;
@@ -192,6 +235,17 @@
         padding-bottom: rem(130);
         &__aside {
             display: none;
+        }
+    }
+    @include gap {
+        &__column {
+            overflow: auto;
+            table {
+                table-layout: auto;
+                th, td {
+                    white-space: nowrap;
+                }
+            }
         }
     }
     @include phone {
@@ -279,6 +333,21 @@
                     .author {
                         background-image: none;
                         margin-right: 0;
+                    }
+                }
+            }
+            table {
+                font-size: rem(14);
+                line-height: calc(20 / 14);
+                margin-top: rem(25);
+                // table-layout: fixed;
+                // width: 100%;
+                thead {
+                    th {
+                        padding: rem(15) 0;
+                        &:first-child {
+                            padding-left: rem(15);
+                        }
                     }
                 }
             }

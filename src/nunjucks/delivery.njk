@@ -1,0 +1,94 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Доставка и оплата" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/delivery.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero__container container">
+            <nav class="hero__breadcrumbs breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Доставка и оплата</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="hero__title">Доставка и оплата</h1>
+        </div>
+    </section>
+        <section class="content section">
+            <div class="content__container container">
+                <div class="content__column">
+                    <h2>H2 На рынке уже более десяти лет</h2>
+                    <p>Таким образом начало повседневной работы по формированию позиции в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач. С другой стороны дальнейшее развитие различных форм <span class="_aaccent">деятельности позволяет оценить</span> значение позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <p>С другой стороны реализация намеченных плановых заданий требуют определения и уточнения форм развития. С другой стороны укрепление и развитие структуры играет важную роль в формировании существенных финансовых и административных условий. Повседневная практика показывает, что рамки и место обучения кадров представляет собой интересный эксперимент проверки.</p>
+                    <figure>
+                        <img src="./images/content.png" alt="">
+                        <figcaption>Краткая подпись к фотографии</figcaption>
+                    </figure>
+                    <h2>H2 Сотрудничнство с произовдителями</h2>
+                    <p>Таким образом начало повседневной работы по формированию позиции в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач. С другой стороны дальнейшее развитие различных форм <span class="_aaccent">деятельности позволяет оценить</span> значение позиций, занимаемых участниками в отношении поставленных задач.</p>
+                    <table>
+                        <caption>A summary of the UK's most famous punk bands</caption>
+                        {# <colgroup>
+                            <col></col>
+                            <col></col>
+                            <col></col>
+                        </colgroup> #}
+                        <thead>
+                            <tr>
+                                <th scope="col">Город</th>
+                                <th scope="col">Стоимость</th>
+                                <th scope="col">Сроки</th>
+                                <th scope="col">Оплата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set rows = [
+                                { city: "Москва", price: "15 000", term: "2-4 дней", payment: "Онлайн-оплата"},
+                                { city: "Санкт-Петербург", price: "9 000", term: "от 2 дней", payment: "Оплата наличными"},
+                                { city: "Ростов-на-Дону", price: "15 000", term: "2-4 дней", payment: "Онлайн-оплата"},
+                                { city: "Казань", price: "Бесплатно", term: "1 день", payment: "Оплата наличными"}
+                            ] %}
+                            {% for i in range(2) %}
+                                {% for row in rows %}
+                                    <tr>
+                                        <th scope="row">{{ row.city }}</th>
+                                        <td>{{ row.price }}₽</td>
+                                        <td>{{ row.term}}</td>
+                                        <td>{{ row.payment }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <aside class="content__aside">
+                    <div class="content__contacts">
+                        <div class="content__contact">
+                            <div class="content__contact-icon"></div>
+                            <a href="+78009993333" class="content__contact-link">8 800 999 33 33</a>
+                        </div>
+                        <div class="content__contact">
+                            <div class="content__contact-icon"></div>
+                            <a href="mailto:mail@example.com" class="content__contact-link">mail@example.com</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    {% include "pages-blocks/why-we.njk" %}
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    {{ super() }}
+{% endblock %}

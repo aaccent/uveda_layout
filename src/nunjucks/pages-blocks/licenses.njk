@@ -1,0 +1,36 @@
+<section class="licenses section section--black">
+    <div class="licenses__container container">
+        <div class="licenses__header section__header">
+            <div class="section__title">Лицензии</div>
+            <div class="swiper-controls">
+                <div class="swiper-button-prev">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="swiper-pagination"></div> 
+                <div class="swiper-button-next">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M5 0.928711L12.0711 7.99978L5 15.0708" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="licenses__body section__body">
+            <div class="licenses__swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(6) %}
+                        <div class="licenses__license swiper-slide">
+                            <div class="licenses__license-arrow">
+                                <svg class="button__arrow" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                                    <path d="M0 1.5H10V11.5" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                </div>
+                            <div class="licenses__license-name">Лицензия на осуществление деятельности Л-3321</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

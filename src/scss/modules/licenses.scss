@@ -1,0 +1,82 @@
+.licenses {
+    .swiper-controls {
+        background-color: #F5F6F8;
+        color: var(--text-color);
+    }
+    .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        background-color: #D9D9D9;
+    }
+    &__swiper {
+    }
+    &__license {
+        border: 1px solid rgba($color: #FFFFFF, $alpha: 0.15);
+        border-radius: rem(15);
+        display: flex;
+        align-items: flex-end;
+        padding: rem(25) rem(30);
+        // padding: calc(30 / 1150 * 100%) calc(25 / 1150 * 100%);
+        position: relative;
+        width: rem(368);
+        aspect-ratio: 0.995;
+    }
+    &__license-name {
+        font-size: rem(22);
+        font-weight: 500;
+        line-height: calc(30 / 22);
+    }
+    &__license-arrow {
+        border-radius: rem(10);
+        background-color: #1F1F1F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: rem(15);
+        right: rem(15);
+        width: calc(60 / 368 * 100%);
+        height: calc(60 / 368 * 100%);
+        width: rem(60);
+        height: rem(60);
+    }
+    @include min_desktop {
+        &__container {
+            display: flex;
+            justify-content: space-between;
+            gap: rem(126);
+        }
+        &__header {
+            flex-direction: column;
+            align-items: flex-start;
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__body {
+            min-width: 0;
+        }
+    }
+    @include tablet {
+        .swiper-controls {
+            display: none;
+        }
+        &__license {
+            padding: rem(20) rem(25);
+            width: rem(320);
+        }
+    }
+    @include phone {
+        &__license {
+            padding: rem(15) rem(20);
+            width: rem(300);
+        }
+        &__license-name {
+            font-size: rem(18);
+            line-height: calc(25 / 18);
+        }
+        &__license-arrow {
+            width: rem(50);
+            height: rem(50);
+        }
+    }
+}
+

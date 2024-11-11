@@ -538,6 +538,23 @@ window.onload = function() {
                 }
             },
         })
+        // licenses 
+        new Swiper(".licenses__swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            breakpoints: {
+                577: {
+                    spaceBetween: 16,
+                }
+            },
+            navigation: {
+                nextEl: ".licenses .swiper-button-next",
+                prevEl: ".licenses .swiper-button-prev",
+            },
+            pagination: {
+                el: ".licenses .swiper-pagination",
+            },
+        })
     }
 
 }

@@ -108,10 +108,6 @@
         justify-content: center;
         flex: 0 0 rem(61);
         padding: rem(16);
-        transition: background-color 0.2s ease 0s;
-        @include ishover {
-            border-color: var(--white);
-        }
         // min-width: rem(61);
     }
     &__search-button {
@@ -262,6 +258,17 @@
         .header__main, 
         .header__search {
             border-color: rgba($color: #FFFFFF, $alpha: 0.15);
+        }
+        .header__search {
+            transition: background-color 0.2s ease 0s, flex-basis 0.8s ease 0s;
+            @include ishover {
+                border-color: var(--white);
+            }
+        }
+        .header__search-form {
+            input::placeholder {
+                color: inherit;
+            }
         }
         .header__contact-info {
             border-color: #303031
@@ -622,6 +629,7 @@
                 transform: translate3d(0, 0, 0);
             }
             .header__search-button {
+                border-color: var(--white);
                 svg {
                     &:first-child { display: none }
                     &:last-child { display: block }
@@ -657,13 +665,18 @@
             padding: 0;
         }
         &__search-button {
-            border: 1px solid #DBDBEE;
+            border: 1px solid rgba($color: #FFFFFF, $alpha: 0.15);
             border-radius: rem(10);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: rem(1);
-            transition: transform 0.2s ease 0s;
+            // padding: rem(1);
+            width: 100%;
+            height: 100%;
+            transition: transform 0.2s ease 0s, background-color 0.2s ease 0s;
+            @include ishover {
+                border-color: var(--white);
+            }
         }
         &__search-block {
             background-color: #F5F6F8;
@@ -711,7 +724,6 @@
             };
         }
     }
-    @include min_gap {}
     @include gap {
         &__container {
             justify-content: space-between;
@@ -771,6 +783,7 @@
         &__main {
             padding-top: rem(20);
             padding-bottom: rem(20);
+            height: calc(100% - rem(65));
         }
         &__menu-link,
         &__menu-label,

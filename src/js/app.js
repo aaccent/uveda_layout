@@ -133,7 +133,9 @@ window.onload = function() {
     }
 
     const headerObserver = new IntersectionObserver(callback)
-    headerObserver.observe(headerEl)
+    if (headerEl.classList.contains("header--black")) {
+        headerObserver.observe(headerEl)
+    }
 
     searchButtonEl.addEventListener("click", e => {
         const wrapperEl = e.currentTarget.closest(".header__inner-wrapper")

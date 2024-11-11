@@ -33,7 +33,7 @@
         line-height: calc(20 / 14);
         letter-spacing: 0.05em;
         white-space: nowrap;
-        text-transform: lowercase;
+        text-transform: uppercase;
     }
     @include phone {
         &__link {

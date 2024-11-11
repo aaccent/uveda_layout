@@ -54,7 +54,6 @@
         align-items: center;
         justify-content: space-between;
         gap: rem(25);
-        transition: all 0.5s ease 0s;
     }
     &__menu {
 
@@ -260,7 +259,6 @@
             border-color: rgba($color: #FFFFFF, $alpha: 0.15);
         }
         .header__search {
-            transition: background-color 0.2s ease 0s, flex-basis 0.8s ease 0s;
             @include ishover {
                 border-color: var(--white);
             }
@@ -336,7 +334,7 @@
             flex: 1 1 100%;
             padding: rem(12) rem(0);
             overflow: hidden;
-            transition: all 0.8s ease 0s;
+            transition: flex-grow 0.5s ease 0s, flex-basis 0.5s ease 0s, width 0.5s ease 0s, opacity 0.5s ease 0s, background-color 0.2s ease 0s;
         }
         &__menu-list {
             margin: 0 0 0 rem(25);
@@ -544,7 +542,6 @@
     @media screen and (min-width: 1080.5px) {
         &._form-show {
             .header__search {
-                // flex-grow: 1;
                 flex-basis: 100%;
             }
         }
@@ -582,7 +579,7 @@
         &__search {
             position: relative;
             // flex-grow: 0;
-            transition: flex-basis 0.8s ease 0s
+            transition: background-color 0.2s ease 0s, flex-basis 0.8s ease 0s;
         }
         &--black {
             .header__search-block {
@@ -665,7 +662,7 @@
             padding: 0;
         }
         &__search-button {
-            border: 1px solid rgba($color: #FFFFFF, $alpha: 0.15);
+            border: 1px solid #DBDBEE;
             border-radius: rem(10);
             display: flex;
             justify-content: center;
@@ -674,9 +671,6 @@
             width: 100%;
             height: 100%;
             transition: transform 0.2s ease 0s, background-color 0.2s ease 0s;
-            @include ishover {
-                border-color: var(--white);
-            }
         }
         &__search-block {
             background-color: #F5F6F8;

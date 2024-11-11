@@ -1,10 +1,12 @@
 {% extends "templates/layout.njk" %}
 
-{% set title = "О компании" %}
+{% set title = "Типовая страница" %}
 
+{% set stock_title = "Другие акции" %}
+{% set hide_more_stocks_button = true %}
 {% block styles %}
     <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/about.min.css">
+    <link rel="stylesheet" href="css/typical.min.css">
 {% endblock %}
 
 {% block content %}
@@ -16,17 +18,19 @@
                         <a href="./" class="breadcrumbs__link">Главная</a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <a href="#" class="breadcrumbs__link">О компании</a>
+                        <a href="#" class="breadcrumbs__link">Акции</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Скидка на запчасти для грузовых прицепов</a>
                     </li>
                 </ol>
             </nav>
-            <h1 class="hero__title">О Компании</h1>
+            <h1 class="hero__title">H1 Скидка на запчасти для грузовых прицепов</h1>
         </div>
     </section>
     {% include "pages-blocks/content.njk" %}
+    {% include "pages-blocks/stocks.njk" %}
     {% include "pages-blocks/why-we.njk" %}
-    {% include "pages-blocks/licenses.njk" %}
-    {% include "pages-blocks/trust-us.njk" %}
     {% include "pages-blocks/feedback.njk" %}
 {% endblock %}
 

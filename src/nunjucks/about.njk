@@ -1,22 +1,18 @@
 {% extends "templates/layout.njk" %}
 
-{% set title = "Главная страница" %}
-{% set is_index_page = true %}
+{% set title = "О компании" %}
+{# {% set is_index_page = true %} #}
 
 {% block styles %}
     <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/about.min.css">
 {% endblock %}
 
 {% block content %}
-    {% include "pages-blocks/banner-hero.njk" %}
-    {% include "pages-blocks/stocks.njk" %}
-    {% include "pages-blocks/products.njk" %}
-    {% include "pages-blocks/cost-calculate.njk" %}
-    {% include "pages-blocks/about.njk" %}
+    {% include "pages-blocks/hero.njk" %}
+    {% include "pages-blocks/content.njk" %}
     {% include "pages-blocks/why-we.njk" %}
     {% include "pages-blocks/trust-us.njk" %}
-    {% include "pages-blocks/info.njk" %}
     {% include "pages-blocks/feedback.njk" %}
 {% endblock %}
 

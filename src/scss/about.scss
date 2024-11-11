@@ -13,19 +13,16 @@
 @import "ui/button.scss";
 @import "ui/form.scss";
 @import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
 
 //bem-blocks
 @import "modules/bem-blocks/logo.scss";
 
 // modules
 @import "modules/header.scss";
-@import "modules/banner-hero.scss";
-@import "modules/stocks.scss";
-@import "modules/products.scss";
-@import "modules/cost-calculate.scss";
-@import "modules/about.scss";
+@import "modules/hero.scss";
+@import "modules/content.scss";
 @import "modules/why-we.scss";
 @import "modules/trust-us.scss";
-@import "modules/info.scss";
 @import "modules/feedback.scss";
 @import "modules/footer.scss";

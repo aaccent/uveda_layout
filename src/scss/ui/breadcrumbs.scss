@@ -1,0 +1,43 @@
+.breadcrumbs {
+    max-width: 100%;
+    overflow: hidden;
+    &__list {
+        display: flex;
+        gap: rem(10);
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        &:last-child {
+            .breadcrumbs__link {
+                cursor: auto;
+                pointer-events: none;
+                opacity: 0.45;
+            }
+        }
+        &:not(:first-child) {
+            &:before {
+                background-color: var(--text-color);
+                border-radius: 50%;
+                content: "";
+                display: block;
+                width: rem(4);
+                height: rem(4);
+            }
+        }
+    }
+    &__link {
+        font-size: rem(14);
+        font-weight: 500;
+        line-height: calc(20 / 14);
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        text-transform: lowercase;
+    }
+    @include phone {
+        &__link {
+            font-size: rem(12);
+        }
+    }
+}

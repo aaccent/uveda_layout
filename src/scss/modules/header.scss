@@ -69,7 +69,6 @@
         column-gap: rem(8);
     }
     &__menu-link,
-    &__menu-label,
     &__phone {
         font-size: rem(14);
         font-weight: 600;
@@ -79,12 +78,15 @@
         transition: opacity 0.2s ease 0s;
         @include ishover {
             opacity: 0.65;
+            & + .header__menu-arrow {
+                opacity: 0.65;
+            }
         }
     }
     &__menu-arrow {
         svg {
             vertical-align: middle;
-            transition: transform 0.2s ease 0s;
+            transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
         }
     }
     &__submenu-link {
@@ -323,6 +325,7 @@
                 flex-basis: 0%;
                 width: 0;
                 opacity: 0;
+                // overflow: hidden;
             }
         }
         &__inner-wrapper {
@@ -333,8 +336,8 @@
             border-radius: rem(12);
             flex: 1 1 100%;
             padding: rem(12) rem(0);
-            overflow: hidden;
-            transition: flex-grow 0.5s ease 0s, flex-basis 0.5s ease 0s, width 0.5s ease 0s, opacity 0.5s ease 0s, background-color 0.2s ease 0s;
+            // overflow: hidden;
+            transition: flex-grow 0.8s ease 0s, flex-basis 0.8s ease 0s, width 0.8s ease 0s, opacity 0.8s ease 0s, background-color 0.2s ease 0s;
         }
         &__menu-list {
             margin: 0 0 0 rem(25);
@@ -626,7 +629,7 @@
                 transform: translate3d(0, 0, 0);
             }
             .header__search-button {
-                border-color: var(--white);
+                // border-color: var(--white);
                 svg {
                     &:first-child { display: none }
                     &:last-child { display: block }
@@ -797,7 +800,6 @@
         &__address,
         &__mail {
             font-size: rem(12);
-            
         }
         &__socials {
             margin: rem(25) 0 0;
@@ -809,11 +811,11 @@
         }
         &__search {
             flex-basis: rem(45);
-            padding: rem(10);
+            
         }
         &__search-button {
-            width: rem(19);
-            height: rem(19);
+            // width: rem(19);
+            // height: rem(19);
             svg {
                 width: rem(15);
                 height: rem(15);
@@ -822,6 +824,7 @@
         &__search-block {
             gap: rem(10);
             padding: rem(20);
+            height: calc(100% - rem(65));
         }
         &__search-form {
             input {

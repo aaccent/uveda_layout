@@ -1,7 +1,7 @@
 {% set menu_items = [
     { label: "Каталог", href: "./catalog" }, 
     { label: "О Компании", href: "./about" }, 
-    { label: "Акции", href: "#" }, 
+    { label: "Акции", href: "./stocks" }, 
     { label: "Доставка", href: "./delivery" }, 
     { label: "Контакты", href: "./contacts" }
 ] %}
@@ -28,7 +28,7 @@
                             {% for item in menu_items %}
                                 <li class="header__menu-item">
                                 {% if loop.index == 1 %}
-                                    <span class="header__menu-label">{{ item.label}}</span>
+                                    <a href="{{ item.href }}" class="header__menu-link">{{ item.label }}</a>
                                     <button class="header__menu-arrow" type="button">
                                         <svg width="9" height="5" viewBox="0 0 9 5" fill="none">
                                             <path d="M4.5 4.5L8.39711 0H0.602886L4.5 4.5Z" fill="currentColor"/>
@@ -38,7 +38,7 @@
                                         <ul class="header__submenu-list">
                                             {% for item in submenu_items %}
                                                 <li class="header__submenu-item">
-                                                    <a href="#" class="header__submenu-link">{{ item }}</a>
+                                                    <a href="./categories" class="header__submenu-link">{{ item }}</a>
                                                 </li>
                                             {% endfor %}
                                         </ul>

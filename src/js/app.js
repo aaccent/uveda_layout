@@ -120,6 +120,7 @@ window.onload = function() {
     }
 
     document.addEventListener("click", documentActions)
+
     // Header
     const callback = function(entries, observer) {
         // элемент в видимой части экрана
@@ -148,10 +149,10 @@ window.onload = function() {
                     lockBody()
                 }
             }
-
             headerEl.classList.toggle("_form-show")
         } else if (!headerEl.classList.contains("_form-show")) {
             headerEl.classList.add("_form-show")
+            menuEl.closest(".header__main").style.overflow = "hidden"
             searchBoxEl.style.justifyContent = "flex-start"
             wrapperEl.addEventListener("transitionend", () => {
                 // gap transition
@@ -174,6 +175,7 @@ window.onload = function() {
             menuBlockEl.addEventListener("transitionend", () => {
                 if (!headerEl.classList.contains("_form-show")) {
                     searchBoxEl.style.justifyContent=""
+                    menuBlockEl.style.overflow = ""
                 }
             }, { once: true })
         }
@@ -252,6 +254,7 @@ window.onload = function() {
                 display: flex;
                 opacity: 1
             `
+            menuEl.closest(".header__main").style.overflow = "hidden"
         } else if (searchBlockEl.style.length) {
             // возможно стоит перенести блок в собитие клика
             searchBoxEl.style = ""

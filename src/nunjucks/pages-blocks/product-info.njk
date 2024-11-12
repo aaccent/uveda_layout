@@ -1,0 +1,65 @@
+<section class="product-info">
+    <div class="product-info__container container">
+        <div class="product-info__gallery">
+            <div class="product-info__swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(6) %}
+                        <div class="swiper-slide">
+                            <img src="./images/thumb-0{{ loop.index }}.png" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="product-info__thumb-swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(6) %}
+                        <div class="swiper-slide">
+                            <img src="./images/thumb-0{{ loop.index }}.png" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="product-info__content">
+            <div class="product-info__header">
+                <div class="product-info__title">Подвеска двухосная 8357 передняя (12 листовая)</div>
+                <div class="product-info__desc">Деталь предназначенная для установки в нее пальца сухаря</div>
+            </div>
+            <div class="product-info__body">
+                <div class="product-info__characteristics">
+                    <div class="product-info__characteristics-title">Характеристики</div>
+                    <div class="product-info__characteristics-table">
+                        <div class="product-info__characteristic">
+                            <div class="product-info__characteristic-name">Бренд</div>
+                            <div class="product-info__characteristic-value">Yonglital</div>
+                        </div>
+                        <div class="product-info__characteristic">
+                            <div class="product-info__characteristic-name">Модель</div>
+                            <div class="product-info__characteristic-value">45144-8600001</div>
+                        </div>
+                        <div class="product-info__characteristic">
+                            <div class="product-info__characteristic-name">Производительность</div>
+                            <div class="product-info__characteristic-value">732 м<sup>3</sup>/ч</div>
+                        </div>
+                        <div class="product-info__characteristic">
+                            <div class="product-info__characteristic-name">Частота вращения</div>
+                            <div class="product-info__characteristic-value">1300 об/мин</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info__series">
+                    <div class="product-info__series-title">Серия:</div>
+                    <ul class="product-info__series-list">
+                        {% set series = ["45144", "120-021", "44331", "11-221", "45144"] %}
+                        {% for item in series %}
+                            <li class="product-info__series-item {{ 'product-info__series-item--active' if loop.index == 1}}">{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="product-info__button button button--primary">
+                    <span class="button__text">Оставить заявку</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

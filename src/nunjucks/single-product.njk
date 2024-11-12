@@ -1,0 +1,42 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Карточка товара" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/single-product.min.css">
+{% endblock %}
+
+{% block content %}
+    <nav class="hero__breadcrumbs breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <a href="./" class="breadcrumbs__link">Главная</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <a href="./catalog" class="breadcrumbs__link">Каталог</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <a href="./categories" class="breadcrumbs__link">Оси и подвески</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <a href="./products" class="breadcrumbs__link">Подвески</a>
+                </li>
+                <li class="breadcrumbs__item">
+                    <a href="#" class="breadcrumbs__link">{{ title }}</a>
+                </li>
+            </ol>
+        </div>
+    </nav>
+    {% include "pages-blocks/product-info.njk" %}
+    {% include "pages-blocks/gallery.njk" %}
+    {% include "pages-blocks/why-we.njk" %}
+    {% include "pages-blocks/info.njk" %}
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    {{ super() }}
+{% endblock %}

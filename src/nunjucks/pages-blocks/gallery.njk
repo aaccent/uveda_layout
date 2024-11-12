@@ -1,0 +1,26 @@
+<section class="gallery section">
+    <div class="gallery__container container">
+        <div class="gallery__content">
+            <div class="gallery__swiper swiper">
+                <div class="gallery__swiper-title">Галерея</div>
+                <div class="swiper-wrapper">
+                    {% for i in range(7) %}
+                        <div class="swiper-slide">
+                            <img src="./images/gallery.png" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="gallery__thumb-swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(7) %}
+                        <div class="swiper-slide">
+                            <img src="./images/gallery.png" alt="">
+                        </div>                        
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

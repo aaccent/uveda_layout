@@ -557,67 +557,105 @@ window.onload = function() {
                 el: ".licenses .swiper-pagination",
             },
         })
+        // single product
+        let productInfoThumbSwiper = new Swiper(".product-info__thumb-swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+        })
+
+        let productInfoSwiper = new Swiper(".product-info__swiper", {
+            slidesPerView: 1,
+            speed: 800,
+            loop: true,
+            effect: "fade",
+            crossFade: true,
+            thumbs: {
+                swiper: productInfoThumbSwiper,
+            },
+        })
+        // gallery
+        let galleryThumbSwiper = new Swiper(".gallery__thumb-swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+        })
+
+        let galleryInfoSwiper = new Swiper(".gallery__swiper", {
+            slidesPerView: 1,
+            speed: 800,
+            loop: true,
+            effect: "fade",
+            crossFade: true,
+            thumbs: {
+                swiper: galleryThumbSwiper,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        })
+
+        // productInfoThumbSwiper.controller.control = productInfoSwiper
+        // productInfoSwiper.controller.control = productInfoThumbSwiper
     }
 
-        // yandex map
+    // yandex map
 
-        function init(mapContainerSelector) {
-            function setMapPin() {
-                let myCollection = new ymaps.GeoObjectCollection();
-                let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
-                // создание и установка пинов
-                myCollection.add(new ymaps.Placemark(coords, {
-                    iconLayout: "default#image",
-                    iconImageHref: imagesSrc.pinImage,
-                    iconImageSize: [60, 60],
-                }));
-                // добавление пинов на карту
-                map.geoObjects.add(myCollection);
-            }
-    
-            async function getCoords () {
-                setTimeout(() => {
-                    setMapPin()
-                }, 2000)
-            }
-            
-            let mapEl = document.getElementById(mapContainerSelector);
-            let center = mapEl?.dataset.center?.split(',').map(Number) || [55.79551291555022,49.10679244528347];
-    
-            // создание карты
-            let map = new ymaps.Map(mapContainerSelector, {
-                center,
-                controls: [],
-                zoom: 14,
-            }, {  autoFitToViewport: 'always' })
-            
-            let imagesSrc = mapEl.dataset
-            
-            getCoords()
-            
-            // zoom ctrl + mouse wheel
-            let ctrlKey = false
-            let body = document.getElementsByTagName('body')[0];
-            map.behaviors.disable(['scrollZoom', 'drag']);
-            body.onkeydown = callbackDown;
-            body.onkeyup = callbackUp;
-            function callbackDown(e){
-                if(e.keyCode === 17 && !ctrlKey){
-                    ctrlKey = true
-                    map.behaviors.enable(['scrollZoom']);
-                }
-            }
-            function callbackUp(e){
-                if(e.keyCode === 17){
-                    ctrlKey = false
-                    map.behaviors.disable(['scrollZoom']);
-                }
+    function init(mapContainerSelector) {
+        function setMapPin() {
+            let myCollection = new ymaps.GeoObjectCollection();
+            let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
+            // создание и установка пинов
+            myCollection.add(new ymaps.Placemark(coords, {
+                iconLayout: "default#image",
+                iconImageHref: imagesSrc.pinImage,
+                iconImageSize: [60, 60],
+            }));
+            // добавление пинов на карту
+            map.geoObjects.add(myCollection);
+        }
+
+        async function getCoords () {
+            setTimeout(() => {
+                setMapPin()
+            }, 2000)
+        }
+        
+        let mapEl = document.getElementById(mapContainerSelector);
+        let center = mapEl?.dataset.center?.split(',').map(Number) || [55.79551291555022,49.10679244528347];
+
+        // создание карты
+        let map = new ymaps.Map(mapContainerSelector, {
+            center,
+            controls: [],
+            zoom: 14,
+        }, {  autoFitToViewport: 'always' })
+        
+        let imagesSrc = mapEl.dataset
+        
+        getCoords()
+        
+        // zoom ctrl + mouse wheel
+        let ctrlKey = false
+        let body = document.getElementsByTagName('body')[0];
+        map.behaviors.disable(['scrollZoom', 'drag']);
+        body.onkeydown = callbackDown;
+        body.onkeyup = callbackUp;
+        function callbackDown(e){
+            if(e.keyCode === 17 && !ctrlKey){
+                ctrlKey = true
+                map.behaviors.enable(['scrollZoom']);
             }
         }
-    
-        // ymaps.ready(() => init("map"));
-
-        if (document.getElementById("map")) {
-            ymaps.ready(() => init("map"));
+        function callbackUp(e){
+            if(e.keyCode === 17){
+                ctrlKey = false
+                map.behaviors.disable(['scrollZoom']);
+            }
         }
+    }
+
+    // ymaps.ready(() => init("map"));
+
+    if (document.getElementById("map")) {
+        ymaps.ready(() => init("map"));
+    }
 }

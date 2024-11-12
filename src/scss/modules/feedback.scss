@@ -69,6 +69,9 @@
                 margin-bottom: rem(20);
             }
         }
+        &__title {
+            white-space: normal;
+        }
         &__content {
             gap: rem(30);
         }

@@ -57,6 +57,7 @@
     @include phone {
         &__title {
             line-height: calc(50 / 48);
+            white-space: normal;
         }
 
         &__card {

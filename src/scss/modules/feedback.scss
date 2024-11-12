@@ -38,6 +38,7 @@
         line-height: calc(20 / 14);
         letter-spacing: 0.05em;
         opacity: 0.45;
+        max-width: rem(230);
         text-transform: uppercase;
     }
 
@@ -52,6 +53,9 @@
         flex-basis: rem(752);
     }
     @include gap {
+        &__contacts {
+            row-gap: rem(40);
+        }
         &__content {
             flex-direction: column;
             & > * {
@@ -74,6 +78,18 @@
         }
         &__content {
             gap: rem(30);
+        }
+        &__contacts {
+            row-gap: rem(20);
+        }
+        &__contacts-title {
+            font-size: rem(12);
+            line-height: calc(20 / 12);
+        }
+        &__contacts-item {
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
         }
         &__steps {
             row-gap: rem(20);
@@ -104,14 +120,15 @@
 
     &__label {
         font-size: rem(22);
-        font-weight: 600;
+        font-weight: 500;
         line-height: calc(30 / 22);
+        white-space: nowrap
     }
     
     @include phone {
-        gap: rem(20);
+        gap: rem(15);
 
-        &__number {
+        &__link {
             border-radius: rem(8);
             font-size: rem(18);
             line-height: calc(30 / 18);
@@ -119,9 +136,9 @@
             height: rem(45);
         }
 
-        &__text {
-            font-size: rem(12);
-            line-height: calc(20 / 12);
+        &__label {
+            font-size: rem(16);
+            line-height: calc(25 / 16);
         }
     }
 }

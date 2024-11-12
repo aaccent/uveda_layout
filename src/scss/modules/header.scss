@@ -20,24 +20,6 @@
         align-items: stretch;
         gap: rem(10);
     }
-    &__logo {
-        display: flex;
-        align-self: center;
-        gap: rem(10);
-        margin-right: rem(25);
-    }
-    &__logo-title {
-        font-size: rem(28);
-        font-weight: 600;
-        line-height: calc(30/28);
-        text-transform: uppercase;
-    }
-    &__logo-desc {
-        font-size: rem(12);
-        font-weight: 400;
-        line-height: calc(14 / 12);
-        text-transform: lowercase;
-    }
     &__inner-wrapper {
         display: flex;
         flex-grow: 0;
@@ -768,15 +750,6 @@
                 margin-right: rem(-45);
             }
         }
-        &__logo {
-            gap: rem(9)
-        }
-        &__logo-title {
-            font-size: rem(26);
-        }
-        &__logo-desc {
-            font-size: rem(11);
-        }
         &__main {
             padding-top: rem(20);
             padding-bottom: rem(20);
@@ -879,11 +852,5 @@
                 }
             }
         }
-    }
-    @media screen and (max-width: 379px) { 
-        &__logo-desc {
-            display: none;
-        }
-        
     }
 }

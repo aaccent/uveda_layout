@@ -45,6 +45,7 @@ body {
     color: var(--text-color);
     font-family: "Involve", "sans-serif";
     padding: rem(80) 0 0;
+    min-width: rem(320);
     &._lock {
         height: 100%;
         overflow: hidden;

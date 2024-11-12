@@ -1,0 +1,58 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Каталог" %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="css/catalog.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="hero section">
+        <div class="hero__container container">
+            <nav class="hero__breadcrumbs breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Каталог</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="hero__title">Каталог</h1>
+        </div>
+
+    </div>
+    </section>
+    <div class="catalog">
+        <div class="container">
+        <div class="catalog__grid">
+            {% set products = [
+                { name: "Оси", img: "product-01.png" },
+                { name: "Подвеска", img: "product-02.png" },
+                { name: "Тормозные системы", img: "product-03.png" },
+                { name: "Комплектующие", img: "product-01.png" },
+                { name: "Запасные части", img: "product-01.png" }
+            ] %}
+            {% for i in range(2) %}
+                {% for product in products %}
+                    <div class="catalog__item product">
+                        <div class="product__amount">12 позиций</div>
+                        <div class="product__image">
+                            <img src="./images/{{product.img}}" alt="">
+                        </div>
+                        <div class="product__name">{{ product.name }}</div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=d8a21585-38da-456b-a9c1-d0839c8a79fd&load=package.standard&lang=ru_RU" type='text/javascript'></script>
+    {{ super() }}
+{% endblock %}

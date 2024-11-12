@@ -9,7 +9,10 @@
         min-height: rem(240);
     }
     &__title {
-        @include h1()
+        @include h1();
+        &:not(:first-child) {
+            margin: rem(100) 0 0;
+        }
     }
     @include phone {
         padding: rem(15) 0;

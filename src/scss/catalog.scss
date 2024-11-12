@@ -1,0 +1,64 @@
+
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints";
+@import "mixins/media";
+@import "mixins/fonts";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
+//bem-blocks
+@import "modules/bem-blocks/logo.scss";
+@import "modules/bem-blocks/product.scss";
+
+// modules
+@import "modules/header.scss";
+@import "modules/hero.scss";
+.catalog {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
+        gap: rem(16);
+        margin: rem(60) 0 0  
+    }
+    @include tablet {
+        &__grid {
+        }
+        &__item {
+            aspect-ratio: 0.75;
+            .product__image {
+                width: calc(100% - 5rem)
+            }
+        }
+    }
+    @include gap {
+        &__grid {
+            grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
+        }
+        &__item {
+            aspect-ratio: calc(340 / 325);
+            justify-self: center;
+            width: 100%;
+            max-width: rem(420);
+            .product__image {
+                width: calc(100% - 10rem)
+            }
+            
+        }
+    }
+    @include phone {
+        &__grid {
+            grid-template-columns: 1fr
+        }
+    }
+}
+@import "modules/feedback.scss";
+@import "modules/footer.scss";

@@ -1,0 +1,151 @@
+
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints";
+@import "mixins/media";
+@import "mixins/fonts";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
+//bem-blocks
+@import "modules/bem-blocks/logo.scss";
+
+// modules
+@import "modules/header.scss";
+@import "modules/hero.scss";
+
+[class*="copyrights-pane"] {
+    display: none !important
+}
+
+[class*="ground-pane"] {
+    filter: grayscale(1) invert(0.89) brightness(1.4) invert(0.89) contrast(1.3) invert(0.89) brightness(1.1);
+}
+
+.hero {
+    &__map-box {
+        position: relative;
+        width: 100%;
+        margin: rem(50) 0 0;
+    }
+    &__map {
+        border-radius: rem(20);
+        width: 100%;
+        height: rem(650);
+        overflow: hidden;
+    }
+    &__contact-info {
+        background-color: var(--white);
+        border-radius: rem(20);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: rem(40);
+        padding: rem(40);
+        position: absolute;
+        right: rem(15);
+        bottom: rem(15);
+        width: rem(350);
+        height: calc(100% - 2 * rem(15));
+        z-index: 2;
+        .contact-info__img {
+            border-radius: rem(20);
+            flex-shrink: 0;
+            width: 100%;
+            height: rem(235);
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .contact-info__box {
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .contact-info__socials {
+            &:not(:first-child) {
+                margin-top: 0;
+            }
+        }
+    }
+    @include tablet {
+        &__map {
+            height: rem(580);
+        }
+        &__contact-info {
+            position: static;
+            height: auto;
+            width: auto;
+            max-width: rem(480);
+            &:not(:first-child) {
+                margin: rem(40) 0 0;
+            }
+        }
+    }
+    @include phone {
+        &__map-box {
+            &:not(:first-child) {
+                margin-top: rem(25);
+            }
+        }
+        &__map {
+            aspect-ratio: calc(340 / 450);
+            border-radius: rem(15);
+            height: auto;
+            max-height: rem(500);
+        }
+        &__contact-info {
+            border-radius: rem(15);
+            gap: rem(20);
+            padding: rem(20);
+            .contact-info__img {
+                aspect-ratio: calc(300 / 180);
+                border-radius: rem(15);
+                height: auto;
+            }
+            &:not(:first-child) {
+                margin-top: rem(10);
+            }
+        }
+    }
+}
+
+.map {
+    @include tablet {
+        border-radius: 0;
+        // display: flex;
+        // flex-direction: column-reverse;
+        height: auto;
+        ymaps {
+            border-radius: rem(20);
+            height: rem(580) !important;
+            flex-basis: auto;
+            overflow: hidden;
+        }
+        &__contact-info {
+            position: static;
+            width: auto;
+            height: auto;
+            // width: calc(100% - 2 * rem(10));
+        }
+    }
+    @include phone {
+        &__contact-info {
+            left: rem(10);
+            bottom: rem(10) ;
+        }
+    }
+}
+
+@import "modules/feedback.scss";
+@import "modules/footer.scss";

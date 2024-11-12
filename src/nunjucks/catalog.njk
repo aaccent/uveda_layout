@@ -25,7 +25,7 @@
 
     </div>
     </section>
-    <div class="catalog">
+    <section class="catalog section">
         <div class="container">
         <div class="catalog__grid">
             {% set products = [
@@ -37,18 +37,18 @@
             ] %}
             {% for i in range(2) %}
                 {% for product in products %}
-                    <div class="catalog__item product">
+                    <a href="./categories" class="catalog__item product">
                         <div class="product__amount">12 позиций</div>
                         <div class="product__image">
                             <img src="./images/{{product.img}}" alt="">
                         </div>
                         <div class="product__name">{{ product.name }}</div>
-                    </div>
+                    </a>
                 {% endfor %}
             {% endfor %}
             </div>
         </div>
-    </div>
+    </section>
     {% include "pages-blocks/feedback.njk" %}
 {% endblock %}
 

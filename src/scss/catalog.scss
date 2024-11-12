@@ -27,10 +27,11 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
         gap: rem(16);
-        margin: rem(60) 0 0  
+        padding: rem(60) 0 0  
     }
     @include tablet {
         &__grid {
+            padding-top: rem(40);
         }
         &__item {
             aspect-ratio: 0.75;
@@ -42,6 +43,7 @@
     @include gap {
         &__grid {
             grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
+            padding-top: rem(20);
         }
         &__item {
             aspect-ratio: calc(340 / 325);

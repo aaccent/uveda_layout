@@ -208,16 +208,18 @@
     &__contact-icon {
         background-color: var(--white);
         border-radius: rem(10);
+        color: var(--primary);
         display: flex;
         justify-content: center;
         align-items: center;
         width: rem(60);
         height: rem(60);
     }
-    &__contact-link {
+    &__contact-label {
         font-size: rem(22);
         font-weight: 500;
         line-height: calc(30 / 22);
+        user-select: none;
     }
     @include desktop {
         &__contacts {
@@ -227,7 +229,7 @@
             width: rem(50);
             height: rem(50);
         }
-        &__contact-link {
+        &__contact-label {
             font-size: rem(18);
         }
     }

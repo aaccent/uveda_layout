@@ -1,0 +1,292 @@
+
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints";
+@import "mixins/media";
+@import "mixins/fonts";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
+//bem-blocks
+@import "modules/bem-blocks/logo.scss";
+@import "modules/bem-blocks/product.scss";
+
+// modules
+@import "modules/header.scss";
+@import "modules/hero.scss";
+
+.products-layout {
+    padding: rem(80) 0 rem(180);
+    &__container {
+        display: flex;
+        gap: rem(40);
+    }
+    &__sidebar {
+        flex-basis: rem(268);
+    }
+
+    &__grid {
+        display: grid;
+        gap: rem(16);
+        flex-grow: 1;
+        &--cols-4 {
+            grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
+        }
+    }
+    @include tablet {
+        &__container {
+            flex-direction: column;
+        }
+        &__sidebar {
+            flex-basis: auto;
+        }
+    }
+    @include phone {
+        padding: rem(40) 0 rem(80);
+        &__container {
+            gap: rem(20);
+        }
+        &__grid {
+            gap: rem(10);
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.sidebar {
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:not(:last-child) {
+            margin: 0 0 rem(30)
+        }
+    }
+    &__title {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+    }
+    &__button {
+        display: none;
+    }
+
+    &__filters-list {
+        display: flex;
+        flex-direction: column;
+        gap: rem(25)
+    
+    }
+    
+    &__filter-item {
+        border-top: 1px solid #DBDBEE;
+        padding: rem(30) 0 0
+    }
+
+    @include tablet {
+        &__header {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(12);
+            padding: rem(20);
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__body {
+            display: none;
+        }
+    }
+    @include phone {
+        &__title {
+            font-size: rem(16);
+            font-weight: 500;
+            line-height: calc(20 / 16);
+        }
+    }
+}
+
+.filter {
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(10)
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+    }
+
+    &__arrow {
+    }
+
+    &__body {
+        padding: rem(20) 0 0
+    }
+
+    &__interval {
+        display: flex;
+        gap: rem(6)
+    }
+
+    &__interval-input {
+        flex-grow: 1;
+        input {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(10);
+            display: block;
+            font-size: rem(16);
+            font-weight: 400;
+            line-height: calc(25 / 16);
+            padding: rem(12) rem(20);
+            width: 100%
+        }
+    }
+    &__options-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(15);
+    }
+
+    &__options-list{
+    }
+
+    &__option {
+        display: flex;
+        gap: rem(12);
+        justify-content: flex-start;
+    }
+
+    &__option-input {
+        border: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        &:checked + .filter__option-box {
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__option-box {
+        border: 1px solid #DBDBEE;
+        border-radius: rem(5);
+        display: inline-block;
+        cursor: pointer;
+        font-size: rem(22);
+        line-height: 1;
+        flex-shrink: 0;
+        position: relative;
+        width: rem(22);
+        height: rem(22);
+        overflow: hidden;
+        &:before {
+            opacity: 0;
+            visibility: hidden;
+        }            
+        @include ishover {
+            // .form__option-input:not(:checked) + & {
+                // background-color: rgba($color: $white, $alpha: 0.15);
+            // }
+        }
+    }
+
+    &__option-label {
+        font-size: rem(16);
+        font-weight: 400;
+        line-height: calc(25 / 16);
+        opacity: 0.75;
+        user-select: none;
+    }
+}
+
+.product-card {
+    background-color: #F5F6F8;
+    border-radius: rem(15);
+    padding: rem(10);
+    &__image {
+        background-color: var(--white);
+        border-radius: rem(5);
+        width: 100%;
+        height: rem(230);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+        &:not(:last-child) {
+            margin: 0 0 rem(25)
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: rem(40);
+        padding: 0 rem(15) rem(15);
+    }
+    
+    &__title {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+    }
+
+    &__price {
+        background-color: var(--primary);
+        border-radius: rem(5);
+        color: var(--white);
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        padding: rem(5) rem(10)
+    }
+    @include phone {
+        display: flex;
+        flex-direction: row;
+        gap: rem(15);
+        &__image {
+            width: rem(130);
+            height: rem(130);
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__title {
+            font-size: rem(16);
+            font-weight: 500;
+            line-height: calc(20 / 16);
+        }
+        &__price {
+            font-size: rem(12);
+            font-weight: 600;
+            line-height: calc(20 / 12);
+            padding: rem(5) rem(8)
+        }
+    }
+}
+
+@import "modules/info.scss";
+@import "modules/feedback.scss";
+@import "modules/footer.scss";

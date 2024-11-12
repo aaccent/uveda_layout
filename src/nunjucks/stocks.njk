@@ -1,0 +1,138 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Акции" %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="css/stocks.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="hero section">
+        <div class="hero__container container">
+            <nav class="hero__breadcrumbs breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">{{ title }}</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="hero__title">{{ title }}</h1>
+        </div>
+    </section>
+    <section class="products-layout">
+        <div class="products-layout__container container">
+            <aside class="products-layout__sidebar sidebar">
+                <div class="sidebar__header">
+                    <div class="sidebar__title">Фильтрация по продукции:</div>
+                    <button class="sidebar__button" type="button"></button>
+                </div>
+                <div class="sidebar__body">
+                    <ul class="sidebar__filters-list">
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Цена, ₽</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body">
+                                <div class="filter__interval">
+                                    <div class="filter__interval-input">
+                                        <input type="number" min="0" placeholder="от 0">
+                                    </div>
+                                    <div class="filter__interval-input">
+                                        <input type="number" max="550" placeholder="от 550">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Бренд</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body">
+                                <ul class="filter__options-list">
+                                    {% set brands = ["Komatsu", "Caterpillar", "HITACHI", "Hyundai"] %}
+                                    {% for brand in brands %}
+                                        <li class="filter__option-item">
+                                            <label class="filter__option"> 
+                                                <input class="filter__option-input" type="checkbox" name="brand">
+                                                <span class="filter__option-box icon icon-check"></span>
+                                                <span class="filter__option-label">{{ brand }}</span>
+                                            </label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Применяемость</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body">
+                                <ul class="filter__options-list">
+                                    {% set brands = ["НефАЗ-96896-0110411", "НефАЗ-66062", "НефАЗ-6606", "НефАЗ-96931-10-07"] %}
+                                    {% for brand in brands %}
+                                        <li class="filter__option-item">
+                                            <label class="filter__option"> 
+                                                <input class="filter__option-input" type="checkbox" name="brand">
+                                                <span class="filter__option-box icon icon-check"></span>
+                                                <span class="filter__option-label">{{ brand }}</span>
+                                            </label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Стоимость</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body"></div>
+                        </li>
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Производительность</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body"></div>
+                        </li>
+                        <li class="sidebar__filter-item filter">
+                            <div class="filter__header">
+                                <div class="filter__title">Частота оборотов</div>
+                                <button class="filter__arrow"></button>
+                            </div>
+                            <div class="filter__body"></div>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <main class="products-layout__grid products-layout__grid--cols-3">
+                {% for i in range(15) %}
+                    <div class="stocks__item stock">
+                        <div class="stock__content">
+                            <div class="stock__discount"><span class="stock__discount-value">30</span><span class="stock__discount-unit">%</span></div>
+                            <div class="stock__date">до 12.05</div>
+                            <div class="stock__title">Скидка на запчасти для грузовых прицепов</div>
+                        </div>
+                        <div class="stock__image">
+                            <img src="./images/stock.png" alt="">
+                        </div>
+                    </div>
+                {% endfor %}
+            </main>
+        </div>
+    </section>
+    {% include "pages-blocks/info.njk" %}
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=d8a21585-38da-456b-a9c1-d0839c8a79fd&load=package.standard&lang=ru_RU" type='text/javascript'></script>
+    {{ super() }}
+{% endblock %}

@@ -1,0 +1,386 @@
+
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints";
+@import "mixins/media";
+@import "mixins/fonts";
+@import "base.scss";
+
+// ui
+@import "ui/button.scss";
+@import "ui/form.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
+//bem-blocks
+@import "modules/bem-blocks/logo.scss";
+@import "modules/bem-blocks/product.scss";
+
+// modules
+@import "modules/header.scss";
+@import "modules/hero.scss";
+
+.stock {
+    background-color: #F5F6F8;
+    border-radius: rem(20);
+    // cursor: pointer;
+    display: flex;
+    gap: rem(14);
+    padding: rem(25) rem(0) rem(25) rem(30);
+    overflow: hidden;
+    &__content {
+        // flex: 0 1 rem(221);
+        // flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(10);
+        // width: rem(221);
+    }
+
+    &__discount {
+        color: var(--primary);
+        font-weight: 500;
+        line-height: calc(55 / 52);
+    }
+
+    &__discount-value {
+        font-size: rem(52);
+    }
+
+    &__discount-unit {
+        font-size: rem(42);
+    }
+
+    &__date {
+        border: 1px solid var(--primary);
+        border-radius: rem(5);
+        color: var(--primary);
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        padding: rem(5) rem(10);
+    }
+
+    &__title {
+        color: var(--text-color);
+        font-size: rem(18);
+        font-weight: 600;
+        line-height: calc(25 / 18);
+        margin: auto 0 0;
+        transition: color 0.3s ease 0s;
+    }
+
+    &__image {
+        align-self: center;
+        margin-right: calc(-74 / 305 * 100%);
+        width: calc(305 / 496 * 100%);
+        // max-width: rem(305);
+    }
+    @include ishover {
+        .stock__title {
+            color: var(--primary);
+        }
+    }
+    @include phone {
+        gap: rem(20);
+        padding: rem(20) 0 rem(20) rem(20);
+
+        &__content {
+            gap: rem(5);
+            width: auto;
+            max-width: rem(240);
+        }
+        &__discount {
+            line-height: calc(30 / 28);
+        }
+        &__discount-value {
+            font-size: rem(28);
+        }
+
+        &__discount-unit {
+            font-size: rem(22);
+        }
+
+        &__title {
+            font-size: rem(16);
+            line-height: calc(20 / 16);
+        }
+        
+        &__image {
+            margin-right: -50%;
+            width: rem(233);
+        }
+    }
+}
+
+.products-layout {
+    padding: rem(80) 0 rem(180);
+    &__container {
+        display: flex;
+        gap: rem(40);
+    }
+    &__sidebar {
+        flex-basis: rem(268);
+    }
+
+    &__grid {
+        display: grid;
+        gap: rem(16);
+        flex-grow: 1;
+        &--cols-3 {
+            grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
+        }
+    }
+    @include tablet {
+        &__container {
+            flex-direction: column;
+        }
+        &__sidebar {
+            flex-basis: auto;
+        }
+    }
+    @include phone {
+        padding: rem(40) 0 rem(80);
+        &__container {
+            gap: rem(20);
+        }
+        &__grid {
+            gap: rem(10);
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.sidebar {
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:not(:last-child) {
+            margin: 0 0 rem(30)
+        }
+    }
+    &__title {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+    }
+    &__button {
+        display: none;
+    }
+
+    &__filters-list {
+        display: flex;
+        flex-direction: column;
+        gap: rem(25)
+    
+    }
+    
+    &__filter-item {
+        border-top: 1px solid #DBDBEE;
+        padding: rem(30) 0 0
+    }
+
+    @include tablet {
+        &__header {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(12);
+            padding: rem(20);
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__body {
+            display: none;
+        }
+    }
+    @include phone {
+        &__title {
+            font-size: rem(16);
+            font-weight: 500;
+            line-height: calc(20 / 16);
+        }
+    }
+}
+
+.filter {
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(10)
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+    }
+
+    &__arrow {
+    }
+
+    &__body {
+        padding: rem(20) 0 0
+    }
+
+    &__interval {
+        display: flex;
+        gap: rem(6)
+    }
+
+    &__interval-input {
+        flex-grow: 1;
+        input {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(10);
+            display: block;
+            font-size: rem(16);
+            font-weight: 400;
+            line-height: calc(25 / 16);
+            padding: rem(12) rem(20);
+            width: 100%
+        }
+    }
+    &__options-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(15);
+    }
+
+    &__options-list{
+    }
+
+    &__option {
+        display: flex;
+        gap: rem(12);
+        justify-content: flex-start;
+    }
+
+    &__option-input {
+        border: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        &:checked + .filter__option-box {
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__option-box {
+        border: 1px solid #DBDBEE;
+        border-radius: rem(5);
+        display: inline-block;
+        cursor: pointer;
+        font-size: rem(22);
+        line-height: 1;
+        flex-shrink: 0;
+        position: relative;
+        width: rem(22);
+        height: rem(22);
+        overflow: hidden;
+        &:before {
+            opacity: 0;
+            visibility: hidden;
+        }            
+        @include ishover {
+            // .form__option-input:not(:checked) + & {
+                // background-color: rgba($color: $white, $alpha: 0.15);
+            // }
+        }
+    }
+
+    &__option-label {
+        font-size: rem(16);
+        font-weight: 400;
+        line-height: calc(25 / 16);
+        opacity: 0.75;
+        user-select: none;
+    }
+}
+
+.product-card {
+    background-color: #F5F6F8;
+    border-radius: rem(15);
+    padding: rem(10);
+    &__image {
+        background-color: var(--white);
+        border-radius: rem(5);
+        width: 100%;
+        height: rem(230);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+        &:not(:last-child) {
+            margin: 0 0 rem(25)
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: rem(40);
+        padding: 0 rem(15) rem(15);
+    }
+    
+    &__title {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+    }
+
+    &__price {
+        background-color: var(--primary);
+        border-radius: rem(5);
+        color: var(--white);
+        font-size: rem(14);
+        font-weight: 600;
+        line-height: calc(25 / 14);
+        letter-spacing: 0.05em;
+        padding: rem(5) rem(10)
+    }
+    @include phone {
+        display: flex;
+        flex-direction: row;
+        gap: rem(15);
+        &__image {
+            width: rem(130);
+            height: rem(130);
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__title {
+            font-size: rem(16);
+            font-weight: 500;
+            line-height: calc(20 / 16);
+        }
+        &__price {
+            font-size: rem(12);
+            font-weight: 600;
+            line-height: calc(20 / 12);
+            padding: rem(5) rem(8)
+        }
+    }
+}
+
+@import "modules/info.scss";
+@import "modules/feedback.scss";
+@import "modules/footer.scss";

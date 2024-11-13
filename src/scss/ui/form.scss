@@ -16,13 +16,14 @@
         background-color: #1F1F1F;
         border-radius: rem(10);
         flex-basis: calc(50% - rem(10));
-        padding: rem(15) rem(22);
+        overflow: hidden;
         &--wide {
             flex: 0 0 100% !important;
         }
         &--error {
+            box-shadow: 0 0 rem(8) #F35D00;
             .form__input {
-                border-color: var(--red);
+                color: #F35D00;
             }
         }
     }
@@ -33,13 +34,18 @@
         font-weight: 600;
         line-height: calc(25 / 14);
         letter-spacing: 0.05em;
+        padding: rem(15) rem(22);
         width: 100%;
         text-transform: uppercase;
         &--textarea {
             height: rem(180);
         }
         &:focus {}
-        &::placeholder { opacity: 0.45 }
+        &::placeholder { 
+            font-family: inherit;
+            color: inherit;
+            opacity: 0.45 
+        }
     }
 
     &__error-text {
@@ -70,11 +76,14 @@
     &__file {
         align-self: flex-start;
         max-width: 100%;
-        &_attached &-field {
+        &--attached &-field {
             display: none;
         }
-        &_attached &-doc {
+        &--attached &-doc {
             display: flex;
+        }
+        &:not(:first-child) {
+            margin: rem(15) 0;
         }
     }
     &__file-input {
@@ -90,12 +99,13 @@
         align-items: center;
         justify-content: flex-start;
         align-items: center;
-        gap: rem(12);
+        gap: rem(10);
         span {
-            font-size: rem(18);
-            font-weight: 400;
-            line-height: calc(25 / 18);
-            letter-spacing: -0.02em;
+            font-size: rem(14);
+            font-weight: 60;
+            line-height: calc(25 / 14);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
     }
     &__file-label {
@@ -103,7 +113,7 @@
         display: flex;
         transition: background-color 0.2s ease 0s;
         .icon {
-            background-color: var(--background-color);
+            background-color: #1F1F1F;
             border-radius: 50%;
             display: flex;
             flex-shrink: 0;
@@ -111,12 +121,12 @@
             width: rem(30);
             height: rem(30);
             &::before, &::after {
-                background-color: var(--black);
+                background-color: var(--white);
                 content: "";
                 position: absolute;
                 top: calc(50% - rem(1));
-                left: rem(10);
-                width: rem(10);
+                left: rem(9);
+                width: rem(12);
                 height: rem(2);
             }
             &::after {
@@ -133,7 +143,7 @@
             text-overflow: ellipsis;
         }
         button {
-            background-color: var(--background-color);
+            background-color: #1F1F1F;
             border-radius: 50%;
             display: flex;
             flex-shrink: 0;
@@ -141,12 +151,12 @@
             width: rem(30);
             height: rem(30);
             &::before, &::after {
-                background-color: var(--black);
+                background-color: var(--white);
                 content: "";
                 position: absolute;
                 top: calc(50% - rem(1));
-                left: rem(10);
-                width: rem(10);
+                left: rem(9);
+                width: rem(12);
                 height: rem(2);
             }
             &::after {
@@ -197,6 +207,9 @@
     @include phone {
         &__body {
             gap: rem(10);
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
         }
         &__footer {
             align-items: stretch;
@@ -204,14 +217,31 @@
         }
         &__field {
             border-radius: rem(8);
-            padding-left: rem(20);
-            padding-right: rem(20);
         }
         &__input {
             font-size: rem(12);
             line-height: calc(20 / 16);
+            padding-left: rem(20);
+            padding-right: rem(20);
             &--textarea {
                 height: rem(140);
+            }
+        }
+        &__file-label,
+        &__file-doc {
+            gap: rem(8);
+            span {
+                font-size: rem(12);
+                line-height: calc(20 / 14);
+            }
+        }
+        &__file-label .icon,
+        &__file-doc .close {
+            width: rem(25);
+            height: rem(25);
+            &::before, &::after {
+                left: rem(7.5);
+                width: rem(10);
             }
         }
     }

@@ -34,17 +34,32 @@
                         </li>
                     </ul>
                 </div>
-                <form action="#" method="post" class="feedback__form form">
+                <form action="#" method="post" autocomplete="off" class="feedback__form form">
                     <div class="form__body">
                         <div class="form__field">
-                            <input type="text" name="name" placeholder="Ваше имя" class="form__input">
+                            <input type="text" name="name" placeholder="Ваше имя" class="form__input form__input--required">
                         </div>
                         <div class="form__field">
-                            <input type="tel" name="phone" placeholder="Номер телефона" class="form__input">
+                            <input type="tel" name="phone" placeholder="Номер телефона" class="form__input form__input--required">
                         </div>
                         <div class="form__field form__field--wide">
                             <textarea class="form__input form__input--textarea" name="comment" placeholder="Ваше сообщение"></textarea>
                         </div>
+                        {% if file_input %}
+                            <div class="form__file">
+                                <div class="form__file-field">
+                                    <input class="form__file-input" type="file" id="file" accept=".pdf, .doc, .docx"> 
+                                    <label class="form__file-label" for="file">
+                                        <div class="icon"></div>
+                                        <span class="text">Прикрепить файл</span>
+                                    </label>
+                                </div>
+                                <div class="form__file-doc">
+                                    <span class="text"> </span>
+                                    <button class="close" type="button"></button>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form__footer">
                         <button class="form__submit button button--primary" type="submit">

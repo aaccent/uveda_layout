@@ -63,6 +63,119 @@ function closePopup(popup = null) {
     }, {once: true})
 }
 
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+
+// Валидация российского номер
+function validateRuPhone(str) {
+    return /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/.test(
+        str
+    );
+}
+
+function resetForm(form) {
+    form.reset();
+    // form.classList.remove("form--sending")
+    form.querySelector(".form__file").classList.remove("form__file--attached")
+    form.querySelectorAll(".form__field").forEach(fieldEl => fieldEl.classList.remove("form__field-error"))
+    form.querySelectorAll("input, textarea").forEach(inputEl => inputEl.disabled = false)
+}
+
+function validateForm(form) {    
+    const reqFiedls = form.querySelectorAll("[class$='input--required']")
+
+    let errors = 0;
+    for (let i = 0; i < reqFiedls.length; i++) {
+        if (reqFiedls[i].getAttribute("name") === "name") {
+            if (reqFiedls[i].value.trim() === "") {
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
+                errors++;
+            }
+        }
+        if (reqFiedls[i].getAttribute("name") === "phone") {
+            if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 18) {
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
+                errors++;
+            }
+        }
+        // const emailField = form.querySelector("input[type='email']")
+
+        if (reqFiedls[i].getAttribute("name") === "mail") {
+            if (reqFiedls[i].value.trim() === "" || (reqFiedls[i].value.trim !== "" && !validateEmail(reqFiedls[i].value))) {
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
+                errors++;
+            }
+        }
+    }
+
+    if (errors) {
+        console.log("Fill req fields");
+    } else {
+        // form.classList.add("form--sending")
+        form.querySelectorAll("input, textarea").forEach(inputEl => inputEl.disabled = true)
+        setTimeout(() => {
+            resetForm(form)
+        }, 200)
+    }
+}
+
+function init(mapContainerSelector) {
+    function setMapPin() {
+        let myCollection = new ymaps.GeoObjectCollection();
+        let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
+        // создание и установка пинов
+        myCollection.add(new ymaps.Placemark(coords, {
+            iconLayout: "default#image",
+            iconImageHref: imagesSrc.pinImage,
+            iconImageSize: [60, 60],
+        }));
+        // добавление пинов на карту
+        map.geoObjects.add(myCollection);
+    }
+
+    async function getCoords () {
+        setTimeout(() => {
+            setMapPin()
+        }, 2000)
+    }
+    
+    let mapEl = document.getElementById(mapContainerSelector);
+    let center = mapEl?.dataset.center?.split(',').map(Number) || [55.79551291555022,49.10679244528347];
+
+    // создание карты
+    let map = new ymaps.Map(mapContainerSelector, {
+        center,
+        controls: [],
+        zoom: 14,
+    }, {  autoFitToViewport: 'always' })
+    
+    let imagesSrc = mapEl.dataset
+    
+    getCoords()
+    
+    // zoom ctrl + mouse wheel
+    let ctrlKey = false
+    let body = document.getElementsByTagName('body')[0];
+    map.behaviors.disable(['scrollZoom', 'drag']);
+    body.onkeydown = callbackDown;
+    body.onkeyup = callbackUp;
+    function callbackDown(e){
+        if(e.keyCode === 17 && !ctrlKey){
+            ctrlKey = true
+            map.behaviors.enable(['scrollZoom']);
+        }
+    }
+    function callbackUp(e){
+        if(e.keyCode === 17){
+            ctrlKey = false
+            map.behaviors.disable(['scrollZoom']);
+        }
+    }
+}
+
 function getVhUnit() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -262,31 +375,6 @@ window.onload = function() {
 
     desktopMediaQuery.addEventListener("change", closeBurgerMenu)
     bigTabletMediaQuery.addEventListener("change", closeSearchBlock)
-
-    document.querySelectorAll("input[name='phone']").forEach(inputElement => {
-        inputElement.addEventListener("keypress", (e) => {
-            const length = e.target.value.length;
-            if (e.charCode < 48 || e.charCode > 57 || length > 14) {
-                e.preventDefault();
-                return;
-            }
-    
-            switch (length) {
-                case 0: 
-                    e.target.value = "8 " ;
-                    break;
-                case 5:
-                case 9:
-                case 12:
-                    e.target.value += " ";
-                    break;
-                default:
-                    break;
-            }
-        })
-        inputElement.addEventListener("input", e => {e.target.value.length === 2 && (e.target.value = "")})
-    })
-
     
     if (document.querySelector(".tab")) {
         const tabNavEl = document.querySelector(".tab__nav")
@@ -362,7 +450,7 @@ window.onload = function() {
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
     const nameInputEls = document.querySelectorAll(".form__input[name='name']")
-    const inputControlClass = "form__control"
+    const inputControlClass = "form__field"
 
     Array.from(inputEls).forEach(inputEl => {
         let inputControlEl = inputEl.closest("." + inputControlClass)
@@ -370,14 +458,6 @@ window.onload = function() {
         inputEl.addEventListener("input", () => {
             if (inputControlEl.classList.contains(inputControlClass + "--error")) {
                 inputControlEl.classList.remove(inputControlClass + "--error")
-            }
-        })
-
-        inputEl.addEventListener("change", () => {
-            if (inputEl.value.trim() !== "") {
-                inputControlEl.classList.add("form__control--filled")
-            } else {
-                inputControlEl.classList.remove("form__control--filled")
             }
         })
     })
@@ -431,10 +511,10 @@ window.onload = function() {
         }
         const parentEl = e.target.closest(".form__file");
         parentEl.querySelector(".form__file-doc .text").innerHTML = e.target.files[0].name
-        parentEl.classList.add("form__file_attached")
+        parentEl.classList.add("form__file--attached")
         parentEl.querySelector(".form__file-doc button").addEventListener("click", () => {
             e.target.value = "";
-            parentEl.classList.remove("form__file_attached")
+            parentEl.classList.remove("form__file--attached")
         }, { once: true })
     })
 
@@ -650,60 +730,6 @@ window.onload = function() {
     }
 
     // yandex map
-
-    function init(mapContainerSelector) {
-        function setMapPin() {
-            let myCollection = new ymaps.GeoObjectCollection();
-            let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
-            // создание и установка пинов
-            myCollection.add(new ymaps.Placemark(coords, {
-                iconLayout: "default#image",
-                iconImageHref: imagesSrc.pinImage,
-                iconImageSize: [60, 60],
-            }));
-            // добавление пинов на карту
-            map.geoObjects.add(myCollection);
-        }
-
-        async function getCoords () {
-            setTimeout(() => {
-                setMapPin()
-            }, 2000)
-        }
-        
-        let mapEl = document.getElementById(mapContainerSelector);
-        let center = mapEl?.dataset.center?.split(',').map(Number) || [55.79551291555022,49.10679244528347];
-
-        // создание карты
-        let map = new ymaps.Map(mapContainerSelector, {
-            center,
-            controls: [],
-            zoom: 14,
-        }, {  autoFitToViewport: 'always' })
-        
-        let imagesSrc = mapEl.dataset
-        
-        getCoords()
-        
-        // zoom ctrl + mouse wheel
-        let ctrlKey = false
-        let body = document.getElementsByTagName('body')[0];
-        map.behaviors.disable(['scrollZoom', 'drag']);
-        body.onkeydown = callbackDown;
-        body.onkeyup = callbackUp;
-        function callbackDown(e){
-            if(e.keyCode === 17 && !ctrlKey){
-                ctrlKey = true
-                map.behaviors.enable(['scrollZoom']);
-            }
-        }
-        function callbackUp(e){
-            if(e.keyCode === 17){
-                ctrlKey = false
-                map.behaviors.disable(['scrollZoom']);
-            }
-        }
-    }
 
     // ymaps.ready(() => init("map"));
 

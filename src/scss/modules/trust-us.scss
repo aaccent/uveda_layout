@@ -82,9 +82,15 @@
     flex-direction: column;
     gap: rem(60);
     @include adaptive-value(gap, 25, 60, 576, $container-width);
-    &__page {
 
+    &__content {
+        transition: opacity 0.5s ease 0s;
+    }
+
+    &__page {
+        display: none;
         &--active {
+            display: block;
         }
     }
 

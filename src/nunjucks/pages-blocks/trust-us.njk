@@ -6,14 +6,34 @@
         <div class="trust-us__body section-body">
             <div class="trust-us__tab tab">
                 <div class="tab__content">
-                    <div class="tab__page--active">
-                        <div class="trust-us__swiper swiper">
+                    <div class="tab__page tab__page--one tab__page--active">
+                        <div class="trust-us__swiper trust-us__swiper--partners swiper">
                             <div class="swiper-wrapper">
                                 {% for i in range(4) %}
                                     <div class="swiper-slide trust-us__card">
                                         <div class="trust-us__card-year">с 2012 г.</div>
                                         <div class="trust-us__card-logo">
                                             <img src="./images/partner-01.svg" alt="partner logo">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide trust-us__card">
+                                        <div class="trust-us__card-year">с 2012 г.</div>
+                                        <div class="trust-us__card-logo">
+                                            <img src="./images/partner-02.svg" alt="partner logo">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab__page tab__page--two">
+                        <div class="trust-us__swiper trust-us__swiper--clients swiper">
+                            <div class="swiper-wrapper">
+                                {% for i in range(4) %}
+                                    <div class="swiper-slide trust-us__card">
+                                        <div class="trust-us__card-year">с 2012 г.</div>
+                                        <div class="trust-us__card-logo">
+                                            <img src="./images/partner-02.svg" alt="partner logo">
                                         </div>
                                     </div>
                                     <div class="swiper-slide trust-us__card">
@@ -26,13 +46,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab__page"></div>
                 </div>
-                <nav class="tab__nav">
-                    <button class="tab__button tab__button--active button" type="button">
+                <nav class="tab__nav" >
+                    <button class="tab__button tab__button--active button" data-page="one" type="button">
                         <span class="button__text">Наши партнеры</span>
                     </button>
-                    <button class="tab__button button" type="button">
+                    <button class="tab__button button" data-page="two" type="button">
                         <span class="button__text">Наши клиенты</span>
                     </button>
                 </nav>

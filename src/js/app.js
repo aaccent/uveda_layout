@@ -124,12 +124,9 @@ window.onload = function() {
 
     // Header
     const callback = function(entries, observer) {
-        // элемент в видимой части экрана
-        // в данном случае это headerEl
         if (entries[0].isIntersecting) {
             headerEl.classList.add("header--black")
         } else {
-            // элемент пропал с видимой части экрана
             headerEl.classList.remove("header--black")
         }
     }
@@ -290,8 +287,32 @@ window.onload = function() {
         inputElement.addEventListener("input", e => {e.target.value.length === 2 && (e.target.value = "")})
     })
 
-    const faqItemHeaderEls = document.querySelectorAll(".accordion__col > *:first-child");
     
+    if (document.querySelector(".tab")) {
+        const tabNavEl = document.querySelector(".tab__nav")
+        const tabContentEl = document.querySelector(".tab__content");
+
+        console.log(tabContentEl)
+        tabNavEl.addEventListener("click", e => {
+
+            if (!e.target.closest(".tab__button")) {
+                return
+            }
+
+            const currentButton = e.target.closest(".tab__button");
+            tabNavEl.querySelector(".tab__button--active").classList.remove("tab__button--active");
+            currentButton.classList.add("tab__button--active")
+            
+            tabContentEl.style.opacity = 0
+
+            tabContentEl.addEventListener("transitionend", () => {
+                tabContentEl.querySelector(".tab__page--active").classList.remove("tab__page--active")
+                tabContentEl.style.opacity = 1
+                tabContentEl.querySelector(".tab__page--" + currentButton.dataset.page).classList.add("tab__page--active")
+            }, { once: true })
+        })
+    }
+
     function replaceAccordionButtons(e) {
         const accordionButtonEls = Array.from(document.querySelectorAll(".accordion__button"))
         if (e.matches) {    
@@ -304,10 +325,12 @@ window.onload = function() {
             })
         }
     }
-    phoneMediaQuery.addEventListener("change", replaceAccordionButtons)
 
+    phoneMediaQuery.addEventListener("change", replaceAccordionButtons)
     replaceAccordionButtons(phoneMediaQuery)
-    
+
+    const faqItemHeaderEls = document.querySelectorAll(".accordion__col > *:first-child");
+
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
         let timeoutId;
         faqItemHeaderEl.addEventListener("click", e => {
@@ -550,6 +573,7 @@ window.onload = function() {
             slidesPerView: "auto",
             spaceBetween: 10,
             freeMode: true,
+            observeParents: true,
             // freeMode: {
             //     enabled: true,
             //     sticky: true,

@@ -418,54 +418,54 @@ window.onload = function() {
         }
     })
 
-        // article text
-        if (document.querySelector(".article")) {
-            const articleEl = document.querySelector(".article");
-            const articleTextEl = articleEl.querySelector(".article__text");
-            const readMoreButtonEl = articleEl.querySelector(".article__more");
-            const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
-        
-            function changeElemHeight(elem) {
-                const buttonTextEl = elem.querySelector("span")
-                const className = elem.classList[1];
-                if (elem.classList.contains(className + "--open")) {
-                    elem.classList.remove(className + "--open")
-                    buttonTextEl.innerHTML = "Читать полностью"
-                } else {
-                    elem.classList.add(className + "--open")
-                    buttonTextEl.innerHTML = "Свернуть текст"
-                }
-            }
-        
-            function checkElemHeight(elem) {
-                const className = elem.classList[1];
-                const textEl = articleTextEl;
-                const readMoreEl = readMoreButtonEl;
-        
-                if (textEl.offsetHeight < textEl.scrollHeight) {
-                    !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
-                } else {
-                    if (!elem.classList.contains(className + "--open")) {
-                        // elem.className = className
-                        elem.classList.remove(`${className}--hide`);
-                    } else if (textEl.offsetHeight <= maxHeight) {
-                        // elem.className = className
-                        elem.classList.remove(`${className}--hide`);
-                        elem.classList.remove(`${className}--open`);
-                        readMoreEl.querySelector("span").innerHTML = "Читать полностью"
-                    }
-                } 
-            }
+    // article text
+    if (document.querySelector(".article")) {
+        const articleEl = document.querySelector(".article");
+        const articleTextEl = articleEl.querySelector(".article__text");
+        const readMoreButtonEl = articleEl.querySelector(".article__more");
+        const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
     
-        
-            checkElemHeight(articleEl);
-        
-            readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
-        
-            window.addEventListener("resize", () => {
-                checkElemHeight(articleEl)
-            })
+        function changeElemHeight(elem) {
+            const buttonTextEl = elem.querySelector("span")
+            const className = elem.classList[1];
+            if (elem.classList.contains(className + "--open")) {
+                elem.classList.remove(className + "--open")
+                buttonTextEl.innerHTML = "Читать полностью"
+            } else {
+                elem.classList.add(className + "--open")
+                buttonTextEl.innerHTML = "Свернуть текст"
+            }
         }
+    
+        function checkElemHeight(elem) {
+            const className = elem.classList[1];
+            const textEl = articleTextEl;
+            const readMoreEl = readMoreButtonEl;
+    
+            if (textEl.offsetHeight < textEl.scrollHeight) {
+                !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
+            } else {
+                if (!elem.classList.contains(className + "--open")) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                } else if (textEl.offsetHeight <= maxHeight) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                    elem.classList.remove(`${className}--open`);
+                    readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+                }
+            } 
+        }
+
+    
+        checkElemHeight(articleEl);
+    
+        readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
+    
+        window.addEventListener("resize", () => {
+            checkElemHeight(articleEl)
+        })
+    }
 
     if (window.Swiper) {
         // hero
@@ -568,10 +568,17 @@ window.onload = function() {
 
         let productInfoSwiper = new Swiper(".product-info__swiper", {
             slidesPerView: 1,
-            speed: 800,
-            loop: true,
-            effect: "fade",
-            crossFade: true,
+            spaceBetween: 10,
+            breakpoints: {
+                577: {
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    speed: 800,
+                    loop: true,
+                    effect: "fade",
+                    crossFade: true,
+                }
+            },
             thumbs: {
                 swiper: productInfoThumbSwiper,
             },
@@ -660,5 +667,35 @@ window.onload = function() {
 
     if (document.getElementById("map")) {
         ymaps.ready(() => init("map"));
+    }
+
+    // sidebar panel
+    if (document.querySelector(".products-layout")) {
+        const filterEls = document.querySelectorAll(".products-layout .filter")
+
+        Array.from(filterEls).forEach(filterEl => filterEl.addEventListener("click", (e) => {
+            if (!e.target.closest(".filter__header")) {
+                return
+            }
+
+            filterEl.classList.toggle("filter--open")
+        }))
+    }
+
+    // single product page
+    if (document.querySelector(".product-info")) {
+        const seriesListEl = document.querySelector(".product-info__series-list")
+        seriesListEl.addEventListener("click", e => {
+            const seriesClass = 'product-info__series-item'
+            if (
+                !e.target.closest(`.${seriesClass}`) ||
+                e.target.closest(`.${seriesClass}--active`)
+            ) {
+                return
+            }
+
+            e.currentTarget.querySelector(`.${seriesClass}--active`).classList.remove(`${seriesClass}--active`)
+            e.target.closest(`.${seriesClass}`).classList.add(`${seriesClass}--active`)
+        })
     }
 }

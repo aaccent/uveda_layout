@@ -10,7 +10,11 @@
     }
 
     &__title {
-        color: #383838;
+        background-image: linear-gradient(to right, #383838, #1F1F1F);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-box-decoration-break: clone;
+        // color: #383838;
         font-size: rem(192);
         @include adaptive-value(font-size, 48, 192, 576, $container-width);
         font-weight: 500;

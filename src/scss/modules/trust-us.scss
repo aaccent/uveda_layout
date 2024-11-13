@@ -1,6 +1,10 @@
 .trust-us {
 
     &__title {
+        background-image: linear-gradient(to right, #E7E9EC, #CFD4DD);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-box-decoration-break: clone;
         font-size: rem(210);
         @include adaptive-value(font-size, 48, 210, 576, $container-width);
         font-weight: 500;

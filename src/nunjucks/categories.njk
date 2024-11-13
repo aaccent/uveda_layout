@@ -36,16 +36,18 @@
                         { name: "Тормозные диски", imgSrc: "category-01.png" }
                     ] %}
                     {% for category in categories %}
-                        <li class="categories__list-item category">
-                            <div class="category__image">
-                                <img src="./images/{{ category.imgSrc }}" alt="category">
-                            </div>
-                            <div class="category__name">{{ category.name }}</div>
-                            <div class="category__arrow">
-                                <svg width="9" height="14" viewBox="0 0 9 14" fill="none">
-                                    <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                            </div>
+                        <li class="categories__list-item">
+                            <a href="./products" class="categories__list-link category">
+                                <div class="category__image">
+                                    <img src="./images/{{ category.imgSrc }}" alt="category">
+                                </div>
+                                <div class="category__name">{{ category.name }}</div>
+                                <div class="category__arrow">
+                                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none">
+                                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -64,7 +66,11 @@
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Цена, ₽</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body">
                                 <div class="filter__interval">
@@ -80,7 +86,11 @@
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Бренд</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body">
                                 <ul class="filter__options-list">
@@ -89,7 +99,11 @@
                                         <li class="filter__option-item">
                                             <label class="filter__option"> 
                                                 <input class="filter__option-input" type="checkbox" name="brand">
-                                                <span class="filter__option-box icon icon-check"></span>
+                                                <span class="filter__option-box icon icon-check">
+                                                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                                                        <path d="M1 4L4 7L8.5 2.5L10 1" stroke="white" stroke-width="1.5"/>
+                                                    </svg>
+                                                </span>
                                                 <span class="filter__option-label">{{ brand }}</span>
                                             </label>
                                         </li>
@@ -100,7 +114,11 @@
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Применяемость</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body">
                                 <ul class="filter__options-list">
@@ -109,7 +127,11 @@
                                         <li class="filter__option-item">
                                             <label class="filter__option"> 
                                                 <input class="filter__option-input" type="checkbox" name="brand">
-                                                <span class="filter__option-box icon icon-check"></span>
+                                                <span class="filter__option-box">
+                                                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                                                        <path d="M1 4L4 7L8.5 2.5L10 1" stroke="white" stroke-width="1.5"/>
+                                                    </svg>
+                                                </span>
                                                 <span class="filter__option-label">{{ brand }}</span>
                                             </label>
                                         </li>
@@ -120,21 +142,33 @@
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Стоимость</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body"></div>
                         </li>
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Производительность</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body"></div>
                         </li>
                         <li class="sidebar__filter-item filter">
                             <div class="filter__header">
                                 <div class="filter__title">Частота оборотов</div>
-                                <button class="filter__arrow"></button>
+                                <button class="filter__arrow">
+                                    <svg width="14" height="9" viewBox="0 0 14 9" fill="none">
+                                        <path d="M13 8L7 2L1 8" stroke="black" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
                             </div>
                             <div class="filter__body"></div>
                         </li>
@@ -145,7 +179,7 @@
                 {% set product_cards = ["category-01", "category-02", "category-03", "category-04", "category-05", "category-06"] %}
                 {% for i in range(4) %}
                     {% for product in product_cards %}
-                        <div class="product-card">
+                        <a href="./single-product" class="product-card">
                             <div class="product-card__image">
                                 <img src="./images/{{ product }}.png" alt="">
                             </div>
@@ -153,7 +187,7 @@
                                 <div class="product-card__title">Для легкового транспорта</div>
                                 <div class="product-card__price">25 000 ₽</div>
                             </div>
-                        </div>
+                        </a>
                     {% endfor %}
                 {% endfor %}
             </main>

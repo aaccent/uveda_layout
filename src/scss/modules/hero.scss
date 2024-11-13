@@ -6,7 +6,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
-        min-height: rem(240);
+        min-height: rem(180);
     }
     &__title {
         @include h1();
@@ -17,7 +17,7 @@
     @include phone {
         padding: rem(15) 0;
         &__container {
-            min-height: rem(195);
+            min-height: rem(165);
         }
     }
 }

@@ -5,9 +5,12 @@
         display: flex;
         align-items: flex-start;
         gap: rem(60);
-        & > * {
-            flex: 0 0 calc(50% - rem(30))
-        }
+        position: relative;
+    }
+
+    &__breadcrumbs {
+        position: absolute;
+        bottom: calc(100% + rem(40));
     }
 
     &__gallery {
@@ -15,10 +18,11 @@
     }
 
     &__swiper {
-        background-color: var(--white);
+        aspect-ratio: calc(880 / 560);
         border-radius: rem(10);
-        height: rem(560);
+        // height: rem(560);
         .swiper-slide {
+            background-color: var(--white);
             img {
                 width: 100%;
                 height: 100%;
@@ -34,6 +38,7 @@
             width: rem(80);
             height: rem(80);
             opacity: 0.45;
+            overflow: hidden;
             img {
                 width: 100%;
                 height: 100%;
@@ -49,6 +54,9 @@
     }
 
     &__content {
+        // flex: 0 1 rem(580);
+        flex: 0 0 45%;
+        max-width: rem(580);
     }
 
     &__header {
@@ -88,6 +96,9 @@
     }
 
     &__characteristics-table {
+        &:not(:last-child) {
+            margin: 0 0 rem(20);
+        }
     }
 
     &__characteristic {
@@ -118,6 +129,20 @@
         color: rgba($color: #09090A, $alpha: 0.55);
     }
 
+    &__characteristics-more {
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        span {
+            font-size: rem(12);
+            font-weight: 600;
+            line-height: calc(20 / 12);
+            letter-spacing: 0.05;
+            text-transform: uppercase;
+        }
+    }
+
     &__series {
         &:not(:last-child) {
             margin: 0 0 rem(50);
@@ -141,15 +166,22 @@
     &__series-item {
         border: 1px solid #DDE1E8;
         border-radius: rem(5);
+        cursor: pointer;
         font-size: rem(16);
         font-weight: 600;
         line-height: calc(25 / 16);
         letter-spacing: 0.05em;
         padding: rem(15) rem(20);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
         &--active {
             background-color: rgba($color: #0079C4, $alpha: 0.12);
             border-color: rgba($color: #0079C4, $alpha: 0.12);
             color:  var(--primary);
+        }
+        @include ishover {
+            &:not(.product-info__series-item--active) {
+                color: var(--primary);
+            }
         }
     }
 
@@ -158,19 +190,18 @@
     }
     @include tablet {
         &__container {
-            flex-direction: column;
-            gap: rem(40);
-            & > * {
-                flex-basis: auto;
-                width: 100%;
-            }
+            display: block;
         }
         &__gallery {
             margin: 0 auto;
             max-width: 620px;
-            width: 100%;
+            // width: 100%;
+            &:not(:last-child) {
+                margin-bottom: rem(40);
+            }
         }
         &__swiper {
+            aspect-ratio: unset;
             height: rem(420);
             .swiper-slide {
                 // width: auto;
@@ -179,6 +210,10 @@
                     max-width: 100%;
                 }
             }
+        }
+        &__content {
+            flex-basis: auto;
+            max-width: none;
         }
         &__title {
             font-size: rem(34);
@@ -194,12 +229,30 @@
         }
     }
     @include phone {
-        padding: rem(40) 0;
+        padding: rem(60) 0 rem(40);
         &__container {
             gap: rem(25)
         }
+        &__breadcrumbs {
+            bottom: calc(100% + rem(25));
+        }
+        &__gallery {
+            margin-left: calc(-1 * var(--container-padding));
+            margin-right: calc(-1 * var(--container-padding));
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
         &__swiper {
-            height: rem(320);
+            border-radius: 0;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+            height: rem(380);
+            .swiper-slide {
+                aspect-ratio: 1;
+                border-radius: rem(10);
+                overflow: hidden;
+            }
         }
         &__header {
             &:not(:last-child) {
@@ -234,6 +287,11 @@
         &__characteristic {
             font-size: rem(14);
             line-height: calc(20 / 14);
+        }
+        &__series {
+            &:not(:last-child) {
+                margin-bottom: rem(30);
+            }
         }
         &__series-title {
             font-size: rem(16);

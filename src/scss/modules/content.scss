@@ -1,5 +1,6 @@
 .content {
     padding: rem(80) rem(0) rem(180);
+    @include adaptive-value(padding-bottom, 80, 180, 576, $container-width);
     &__container {
         display: flex;
         align-items: flex-start;
@@ -234,7 +235,6 @@
         }
     }
     @include tablet {
-        padding-bottom: rem(130);
         &__aside {
             display: none;
         }
@@ -252,7 +252,6 @@
     }
     @include phone {
         padding-top: rem(50);
-        padding-bottom: rem(80);
         &__column {
             h2 {
                 font-size: rem(22);

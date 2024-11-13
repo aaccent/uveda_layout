@@ -4,9 +4,9 @@
             <div class="gallery__swiper swiper">
                 <div class="gallery__swiper-title">Галерея</div>
                 <div class="swiper-wrapper">
-                    {% for i in range(7) %}
+                    {% for i in range(4) %}
                         <div class="swiper-slide">
-                            <img src="./images/gallery.png" alt="">
+                            <img src="./images/gallery-0{{ loop.index }}.jpg" alt="">
                         </div>
                     {% endfor %}
                 </div>
@@ -14,10 +14,10 @@
             </div>
             <div class="gallery__thumb-swiper swiper">
                 <div class="swiper-wrapper">
-                    {% for i in range(7) %}
+                    {% for i in range(4) %}
                         <div class="swiper-slide">
-                            <img src="./images/gallery.png" alt="">
-                        </div>                        
+                            <img src="./images/gallery-0{{ loop.index }}.jpg" alt="">
+                        </div>
                     {% endfor %}
                 </div>
             </div>

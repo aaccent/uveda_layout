@@ -31,6 +31,8 @@
 }
 
 .hero {
+    padding-bottom: rem(180);
+    @include adaptive-value(padding-bottom, 80, 180, 576, $container-width);
     &__map-box {
         position: relative;
         width: 100%;

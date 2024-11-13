@@ -1,5 +1,26 @@
 <section class="product-info">
     <div class="product-info__container container">
+        <nav class="product-info__breadcrumbs breadcrumbs">
+            <div class="container">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="./catalog" class="breadcrumbs__link">Каталог</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="./categories" class="breadcrumbs__link">Оси и подвески</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="./products" class="breadcrumbs__link">Подвески</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">{{ title }}</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
         <div class="product-info__gallery">
             <div class="product-info__swiper swiper">
                 <div class="swiper-wrapper">
@@ -46,6 +67,12 @@
                             <div class="product-info__characteristic-value">1300 об/мин</div>
                         </div>
                     </div>
+                    <button class="product-info__characteristics-more" type="button">
+                        <span>Cмотреть все характеристики</span>
+                        <svg width="15" height="17" viewBox="0 0 15 17" fill="none">
+                            <path d="M15 1L5.66667 1L5.66667 15M5.66667 15L10.3333 10.3333M5.66667 15L1 10.3333" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info__series">
                     <div class="product-info__series-title">Серия:</div>
@@ -58,6 +85,9 @@
                 </div>
                 <button class="product-info__button button button--primary">
                     <span class="button__text">Оставить заявку</span>
+                        <svg class="button__arrow" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                            <path d="M0 1.5H10V11.5" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
                 </button>
             </div>
         </div>

@@ -9,11 +9,12 @@
         display: flex;
         align-items: center;
         gap: rem(10);
+        opacity: 0.45;
         &:last-child {
+            opacity: 1;
             .breadcrumbs__link {
                 cursor: auto;
                 pointer-events: none;
-                opacity: 0.45;
             }
         }
         &:not(:first-child) {

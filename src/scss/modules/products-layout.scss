@@ -1,0 +1,215 @@
+.products-layout {
+    padding: rem(80) 0 rem(180);
+    &__container {
+        display: flex;
+        gap: rem(40);
+    }
+    &__sidebar {
+        flex-basis: rem(268);
+    }
+
+    &__grid {
+        display: grid;
+        gap: rem(16);
+        flex-grow: 1;
+        &--cols-4 {
+            grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
+        }
+    }
+    @include tablet {
+        &__container {
+            flex-direction: column;
+        }
+        &__sidebar {
+            flex-basis: auto;
+        }
+    }
+    @include phone {
+        padding: rem(40) 0 rem(80);
+        &__container {
+            gap: rem(20);
+        }
+        &__grid {
+            gap: rem(10);
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.sidebar {
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:not(:last-child) {
+            margin: 0 0 rem(30)
+        }
+    }
+    &__title {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+    }
+    &__button {
+        display: none;
+    }
+
+    &__filters-list {
+        display: flex;
+        flex-direction: column;
+        gap: rem(25)
+    
+    }
+    
+    &__filter-item {
+        border-top: 1px solid #DBDBEE;
+        padding: rem(30) 0 0
+    }
+
+    @include tablet {
+        &__header {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(12);
+            padding: rem(20);
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+        }
+        &__body {
+            display: none;
+        }
+    }
+    @include phone {
+        &__title {
+            font-size: rem(16);
+            font-weight: 500;
+            line-height: calc(20 / 16);
+        }
+    }
+}
+
+.filter {
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(10)
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+    }
+
+    &__arrow {
+        transform: rotate(180deg);
+    }
+
+    &__body {
+        overflow: hidden;
+        height: 0;
+        & > * {
+            padding: rem(20) 0 0;
+        }
+    }
+
+    &__interval {
+        display: flex;
+        gap: rem(6)
+    }
+
+    &__interval-input {
+        flex-grow: 1;
+        input {
+            border: 1px solid #DBDBEE;
+            border-radius: rem(10);
+            display: block;
+            font-size: rem(16);
+            font-weight: 400;
+            line-height: calc(25 / 16);
+            padding: rem(12) rem(20);
+            width: 100%
+        }
+    }
+    &__options-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(15);
+    }
+
+    &__options-list{
+    }
+
+    &__option {
+        cursor: pointer;
+        display: flex;
+        gap: rem(12);
+        justify-content: flex-start;
+    }
+
+    &__option-input {
+        border: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        &:checked + .filter__option-box {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            svg {
+                display: block;
+            }
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__option-box {
+        border: 1px solid #DBDBEE;
+        border-radius: rem(5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: rem(22);
+        line-height: 1;
+        flex-shrink: 0;
+        position: relative;
+        width: rem(22);
+        height: rem(22);
+        overflow: hidden;
+        svg {
+            display: none;
+        }     
+        @include ishover {
+            // .form__option-input:not(:checked) + & {
+                // background-color: rgba($color: $white, $alpha: 0.15);
+            // }
+        }
+    }
+
+    &__option-label {
+        font-size: rem(16);
+        font-weight: 400;
+        line-height: calc(25 / 16);
+        opacity: 0.75;
+        user-select: none;
+    }
+
+    &--open {
+        .filter__arrow {
+            transform: rotate(0);
+        }
+        .filter__body {
+            height: auto;
+        }
+    }
+}

@@ -228,7 +228,7 @@
         }
     }
     @include phone {
-        padding: rem(35) rem(20) rem(20);
+        padding: rem(35) 0 rem(20);
         &__top, &__main {
             &:not(:last-child) {
                 margin-bottom: rem(25);

@@ -1,0 +1,10 @@
+.faq {
+    @include min_tablet {
+        &__container {
+            display: grid;
+            grid-template-columns: min(40%, rem(350)) 1fr;
+            align-items: start;
+            gap: rem(35);
+        }
+    }
+}

@@ -289,12 +289,26 @@ window.onload = function() {
         inputElement.addEventListener("input", e => {e.target.value.length === 2 && (e.target.value = "")})
     })
 
-    const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
+    const faqItemHeaderEls = document.querySelectorAll(".accordion__col > *:first-child");
+    
+    function replaceAccordionButtons(e) {
+        const accordionButtonEls = Array.from(document.querySelectorAll(".accordion__button"))
+        if (e.matches) {    
+            accordionButtonEls.forEach(buttonEl => {
+                buttonEl.parentElement.previousElementSibling.firstElementChild.after(buttonEl)
+            })
+        } else {
+            accordionButtonEls.forEach(buttonEl => {
+                buttonEl.parentElement.nextElementSibling.append(buttonEl)
+            })
+        }
+    }
+    phoneMediaQuery.addEventListener("change", replaceAccordionButtons)
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
         let timeoutId;
         faqItemHeaderEl.addEventListener("click", e => {
-            const faqItemEl = faqItemHeaderEl.parentElement;
-            const faqItemBodyEl = faqItemHeaderEl.nextElementSibling;
+            const faqItemEl = faqItemHeaderEl.closest(".accordion");
+            const faqItemBodyEl = faqItemEl.querySelector(".accordion__body");
             const faqItemTextEl = faqItemBodyEl.firstElementChild;
 
             if (faqItemEl.classList.contains("accordion--open")) {

@@ -1,29 +1,67 @@
 .accordion {
+    display: flex;
+    gap: rem(20);
+    &__col {
+        border-top: 1px solid #DBDBEE;
+        padding: rem(15) 0;
+        &:first-child {
+            flex-grow: 1;
+        }
+        &:last-child {
+            flex-shrink: 0;
+            padding-left: rem(15);
+            padding-right: rem(15);
+        }
+    }
     &__header {
+        background-color: #F5F6F8;
+        border-radius: rem(10);
         cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: rem(24);
+        font-size: rem(18);
+        font-weight: 500;
+        line-height: calc(25 / 18);
+        display: inline-flex;
+        align-items: flex-start;
+        gap: rem(10);
+        padding: rem(20) rem(25);
+    }
+
+    &__number {
+        color: rgba($color: #09090A, $alpha: 0.45);
+        user-select: none;
+        &::before {
+            content: "/";
+            color: #F35D00
+        }
     }
 
     &__title {
+        user-select: none;
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: var(--primary);
+        }
     }
 
     &__button {
         position: relative;
-        width: rem(20);
-        height: rem(20);
+        width: rem(65);
+        height: rem(65);
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            &::before, &::after {
+                background-color: var(--primary);
+            }
+        }
         &::before, &::after {
-            background-color: $primary-color;
-            border-radius: rem(10);
+            background-color: var(--text-color);
             content: "";
             position: absolute;
             top: calc(50% - rem(1));
-            left: 0;
-            width: 100%;
+            left: calc(50% - rem(10));
+            width: rem(20);
             height: rem(2);
-            transition: opacity 0.1s ease 0s, transform 0.2s ease 0s;
+            transition: backkground-color 0.2s ease 0s, opacity 0.1s ease 0s, transform 0.2s ease 0s;
         }
         &::after {
             transform: rotate(90deg);
@@ -37,32 +75,64 @@
     }
 
     &__text {
-        margin: rem(30) 0 0;
+        font-size: rem(16);
+        line-height: calc(25 / 16);
+        padding: rem(25) 0;
+        opacity: 0.55;
+        p + p {
+            margin: rem(25) 0 0;
+        }
     }
     
     &--open {
         .accordion__button {
             &::before {
                 opacity: 0;
-                transform: rotate(-90deg);
+                transform: rotate(90deg);
             }
             &::after {
-                transform: rotate(0);
+                transform: rotate(180deg);
             }
         }
     }
-    @include ishover {
-        .accordion__header {
-        }
+    @include gap {
+        gap: 0;
     }
     @include phone {
+        &__col {
+            &:first-child {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                column-gap: rem(20);
+            }
+            &:last-child {
+                padding: 0;
+                width: 0;
+            }
+        }
+        &__header {
+            font-size: rem(16);
+            line-height: calc(20 / 16);
+            padding: rem(15);
+        }
+        &__title {
+        }
+        &__body {
+            grid-row: 2 / 3;
+            grid-column: 1 / 3;
+        }
         &__button {
-            flex-shrink: 0;
-            width: rem(16);
-            height: rem(16);
+            align-self: center;
+            width: rem(20);
+            height: rem(20);
         }
         &__text {
-            margin-top: rem(20)
+            font-size: rem(14);
+            line-height: calc(20 / 14);
+            padding: rem(20) 0;
+            p + p {
+                margin-top: rem(15);
+            }
         }
     }
 }

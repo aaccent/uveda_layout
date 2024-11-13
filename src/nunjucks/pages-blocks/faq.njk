@@ -1,0 +1,39 @@
+<section class="faq section">
+    <div class="faq__container container">
+        <div class="section__header">
+            <div class="faq__title section__title">Частые вопросы и ответы</div>
+        </div>
+        <div class="section__body">
+            <div class="faq__questions">
+                {% set questions = [
+                    "Каковы сроки работы вашей компании?",
+                    "Как я могу получить консультацию по выбору запчастей?",
+                    "Каковы условия хранения и эксплуатации запчастей?",
+                    "Как я могу отслеживать статус моего заказа?",
+                    "Как я могу оплатить заказ?",
+                    "Как я могу получить консультацию по выбору запчастей?"
+                ] %}
+                {% for question in questions %}
+                    <div class="faq__question accordion">
+                        <div class="accordion__col">
+                            <div class="accordion__header">
+                                <div class="accordion__number">{{ loop.index }}</div>
+                                <div class="accordion__title">{{ question }}</div>
+                            </div>
+                            <div class="accordion__body">
+                                <div class="accordion__text">
+                                    <p>Таким образом начало повседневной работы по формированию позиции в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач. С другой стороны дальнейшее развитие различных форм деятельности позволяет оценить значение позиций, занимаемых участниками в отношении.</p>
+                                    <p>С другой стороны реализация намеченных плановых заданий требуют определения и уточнения форм развития. С другой стороны укрепление и развитие структуры играет важную роль в формировании существенных финансовых и административных условий. Повседневная практика показывает, что рамки и место обучения кадров представляет.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__col">
+                            <button class="accordion__button" type="button"></button>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

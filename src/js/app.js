@@ -100,6 +100,7 @@ window.onload = function() {
     const consultationButtonEls = headerEl.querySelectorAll(".header__button")
 
     const consultationPopupEl = document.querySelector(".popup--consultation");
+    const characteristicsPopupEl = document.querySelector(".popup--characteristics");
 
     Array.from(consultationButtonEls).forEach(buttonEl => {
         buttonEl.addEventListener("click", e => {
@@ -304,6 +305,9 @@ window.onload = function() {
         }
     }
     phoneMediaQuery.addEventListener("change", replaceAccordionButtons)
+
+    replaceAccordionButtons(phoneMediaQuery)
+    
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
         let timeoutId;
         faqItemHeaderEl.addEventListener("click", e => {
@@ -699,6 +703,8 @@ window.onload = function() {
     // single product page
     if (document.querySelector(".product-info")) {
         const seriesListEl = document.querySelector(".product-info__series-list")
+        const moreCharacteristics = document.querySelector(".product-info__characteristics-more")
+
         seriesListEl.addEventListener("click", e => {
             const seriesClass = 'product-info__series-item'
             if (
@@ -711,5 +717,7 @@ window.onload = function() {
             e.currentTarget.querySelector(`.${seriesClass}--active`).classList.remove(`${seriesClass}--active`)
             e.target.closest(`.${seriesClass}`).classList.add(`${seriesClass}--active`)
         })
+
+        moreCharacteristics.addEventListener("click", () => openPopup(characteristicsPopupEl))
     }
 }

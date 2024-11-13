@@ -86,8 +86,8 @@
             max-height: none;
         }
         .article__more {
-            object {
-                transform: rotate(0deg);
+            svg {
+                transform: rotate(180deg);
             }
         }
     }

@@ -12,7 +12,6 @@
 
     &__advantages {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         gap: rem(16);
     }
@@ -60,6 +59,9 @@
         }
     }
     @include phone {
+        &__advantages {
+            grid-template-columns: 1fr;
+        }
         &__advantage {
             background-size: calc(84 / 340 * 100%) auto;
             padding: rem(20);

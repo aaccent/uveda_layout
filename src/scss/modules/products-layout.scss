@@ -15,6 +15,9 @@
         &--cols-4 {
             grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
         }
+        &--cols-3 {
+            grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
+        }
     }
     @include tablet {
         &__container {
@@ -41,6 +44,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        text-align: left;
         &:not(:last-child) {
             margin: 0 0 rem(30)
         }
@@ -50,7 +54,7 @@
         font-weight: 500;
         line-height: calc(30 / 24);
     }
-    &__button {
+    &__header-icon {
         display: none;
     }
 
@@ -71,6 +75,7 @@
             border: 1px solid #DBDBEE;
             border-radius: rem(12);
             padding: rem(20);
+            width: 100%;
             &:not(:last-child) {
                 margin-bottom: 0;
             }
@@ -78,7 +83,7 @@
         // &__body {
         //     display: none;
         // }
-        &__button {
+        &__header-icon {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -91,16 +96,26 @@
         }
     }
     @include phone {
+        &__header {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
         &__title {
             font-size: rem(16);
             font-weight: 500;
             line-height: calc(20 / 16);
         }
-        &__button {
+        &__header-icon {
             width: rem(21);
             height: rem(21);
             svg {
                 width: rem(19);
+            }
+        }
+        &__filter-item {
+            &:first-child {
+                border-top: none;
             }
         }
     }

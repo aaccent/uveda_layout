@@ -1,16 +1,22 @@
 .breadcrumbs {
     max-width: 100%;
-    overflow: auto;
-    /* Скрываем scrollbar для IE, Edge и Firefox */
-    -ms-overflow-style: none;  // IE и Edge
-    scrollbar-width: none;  // Firefox 
-    /* Скрываем scrollbar для Chrome, Safari и Opera */
-    &::-webkit-scrollbar {
-        height: 0
+    .container {
+
     }
     &__list {
         display: flex;
         gap: rem(10);
+        margin: 0 calc(-1 * var(--container-padding));
+        padding: 0 var(--container-padding);
+        width: auto;
+        overflow: auto;
+        /* Скрываем scrollbar для IE, Edge и Firefox */
+        -ms-overflow-style: none;  // IE и Edge
+        scrollbar-width: none;  // Firefox 
+        /* Скрываем scrollbar для Chrome, Safari и Opera */
+        &::-webkit-scrollbar {
+            height: 0
+        }
     }
     &__item {
         display: flex;

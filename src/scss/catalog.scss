@@ -24,7 +24,7 @@
 .catalog {
     &__grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(rem(240), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(rem(260), 1fr));
         gap: rem(16);
         padding: rem(60) 0 0  
     }

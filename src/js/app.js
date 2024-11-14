@@ -306,9 +306,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const submenuEl = menuEl.querySelector(".header__submenu")
         const submenuListEl = submenuEl.firstElementChild
 
-        if (window.innerWidth < 769 && e.target.closest(".header__menu-link")) {
+        if (window.innerWidth < 1281 && e.target.closest(".header__menu-link")) {
             e.preventDefault()
-            return
+            // return
         }
 
         if (e.target.closest(".header__submenu")) {
@@ -448,12 +448,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // cookies 
     var cookiesPopoverEl = document.querySelector(".cookies")
-    setTimeout(() => cookiesPopoverEl.classList.add("cookies--show"), 5000)
     cookiesPopoverEl.addEventListener("click", (e) => {
         if (e.target.closest("button")) {
+            localStorage.setItem("uveda_cookies", true)
             cookiesPopoverEl.classList.remove("cookies--show")
         }
     })
+
+    if (!localStorage.getItem("uveda_cookies")) {
+        setTimeout(() => cookiesPopoverEl.classList.add("cookies--show"), 5000)
+    }
     // FORMs
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
@@ -777,7 +781,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.querySelector(".products-layout")) {
         const filterEls = document.querySelectorAll(".products-layout .filter")
-        const filterButtonEl = document.querySelector(".products-layout .sidebar__button")
+        const filterButtonEl = document.querySelector(".products-layout .sidebar__header")
 
         Array.from(filterEls).forEach(filterEl => filterEl.addEventListener("click", (e) => {
             if (!e.target.closest(".filter__header")) {

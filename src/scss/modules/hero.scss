@@ -6,13 +6,16 @@
     justify-content: space-between;
     padding: rem(25) 0 rem(35);
     min-height: rem(180);
-    &__container {
+    // &__container {
+    //     &:not(:first-child) {
+    //         margin: rem(100) 0 0;
+    //     }
+    // }
+    &__title {
+        @include h1();
         &:not(:first-child) {
             margin: rem(100) 0 0;
         }
-    }
-    &__title {
-        @include h1();
     }
     @include phone {
         padding: rem(15) 0;

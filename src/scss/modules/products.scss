@@ -23,7 +23,7 @@
     }
 
     &__item {
-        width: calc((1520 - 4 * 16) / 5 * 1px);
+        width: calc((1520px - var(--scrollbar-width, 0) - 4 * 16px) / 5);
         height: auto;
     }
 

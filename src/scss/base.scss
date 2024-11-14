@@ -195,6 +195,53 @@ body {
     }
 }
 
+.cookies {
+    background-color: var(--white);
+    border: 1px solid #EBEBEB;
+    border-radius: rem(10);
+    display: flex;
+    align-items: center;
+    gap: rem(40);
+    padding: rem(15) rem(15) rem(15) rem(25);
+    position: fixed;
+    right: rem(15);
+    bottom: rem(15);
+    width: rem(545);
+    max-width: 100%;
+    visibility: hidden;
+    transform: translate(0, 100%);
+    transition: transform 0.4s ease-out, visibility 0.4s ease;
+    z-index: var(--cookies-z-index);
+    &__text {
+        font-weight: 500;
+        text-transform: lowercase;
+    }
+    &__button {
+        .button__arrow {
+            color: var(--red) !important
+        }
+    }
+    &--show {
+        visibility: visible;
+        transform: translate(0, 0);
+    }
+    @include phone {
+        flex-direction: column;
+        gap: rem(15);
+        left: rem(15);
+        width: auto;
+        padding: rem(15);
+        &__text {
+            // max-width: rem(315);
+            text-align: center;
+        }
+        &__button {
+            align-self: stretch;
+            justify-content: center !important;
+        }
+    }    
+}
+
 ._transparent {
     opacity: 0.45;
 }

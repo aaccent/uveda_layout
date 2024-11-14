@@ -446,6 +446,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
+    // cookies 
+    var cookiesPopoverEl = document.querySelector(".cookies")
+    setTimeout(() => cookiesPopoverEl.classList.add("cookies--show"), 5000)
+    cookiesPopoverEl.addEventListener("click", (e) => {
+        if (e.target.closest("button")) {
+            cookiesPopoverEl.classList.remove("cookies--show")
+        }
+    })
     // FORMs
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
@@ -784,6 +792,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const filterPopupEl = document.querySelector(".popup--filter")
             openPopup(filterPopupEl)
         })
+        if (tabletMediaQuery.matches) (
+            replaceFilterPanel(tabletMediaQuery)
+        )
     }
 
     // single product page

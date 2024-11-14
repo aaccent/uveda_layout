@@ -1,6 +1,13 @@
 .breadcrumbs {
     max-width: 100%;
-    overflow: hidden;
+    overflow: auto;
+    /* Скрываем scrollbar для IE, Edge и Firefox */
+    -ms-overflow-style: none;  // IE и Edge
+    scrollbar-width: none;  // Firefox 
+    /* Скрываем scrollbar для Chrome, Safari и Opera */
+    &::-webkit-scrollbar {
+        height: 0
+    }
     &__list {
         display: flex;
         gap: rem(10);

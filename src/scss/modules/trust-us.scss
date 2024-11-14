@@ -5,8 +5,8 @@
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
         -webkit-box-decoration-break: clone;
-        font-size: rem(210);
-        @include adaptive-value(font-size, 48, 210, 576, $container-width);
+        font-size: rem(205);
+        @include adaptive-value(font-size, 48, 205, 576, $container-width);
         font-weight: 500;
         line-height: calc(200 / 210);
         white-space: nowrap;

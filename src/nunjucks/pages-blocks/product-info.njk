@@ -43,7 +43,7 @@
         </div>
         <div class="product-info__content">
             <div class="product-info__header">
-                <div class="product-info__title">Подвеска двухосная 8357 передняя (12 листовая)</div>
+                <h1 class="product-info__title">Подвеска двухосная 8357 передняя (12 листовая)</h1>
                 <div class="product-info__desc">Деталь предназначенная для установки в нее пальца сухаря</div>
             </div>
             <div class="product-info__body">
@@ -79,11 +79,13 @@
                     <ul class="product-info__series-list">
                         {% set series = ["45144", "120-021", "44331", "11-221", "45144"] %}
                         {% for item in series %}
-                            <li class="product-info__series-item {{ 'product-info__series-item--active' if loop.index == 1}}">{{ item }}</li>
+                            <li class="product-info__series-item {{ 'product-info__series-item--active' if loop.index == 1}}">
+                                <a href="#" class="product-info__series-link">{{ item }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
-                <button class="product-info__button button button--primary">
+                <button class="product-info__button button button--primary" type="button">
                     <span class="button__text">Оставить заявку</span>
                         <svg class="button__arrow" width="11" height="12" viewBox="0 0 11 12" fill="none">
                             <path d="M0 1.5H10V11.5" stroke="currentColor" stroke-width="1.5"/>

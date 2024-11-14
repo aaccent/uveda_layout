@@ -84,12 +84,16 @@
         align-items: center;
         gap: rem(10);
         padding: rem(10) rem(15);
+        transition: opacity 0.2s ease 0s;
         span {
             font-size: rem(14);
             font-weight: 600;
             line-height: calc(25 / 14);
             letter-spacing: 0.05em;
             text-transform: uppercase;
+        }
+        @include ishover {
+            opacity: 1;
         }
     }
 

@@ -75,8 +75,19 @@
                 margin-bottom: 0;
             }
         }
-        &__body {
-            display: none;
+        // &__body {
+        //     display: none;
+        // }
+        &__button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: rem(25);
+            height: rem(25);
+            svg {
+                width: rem(24);
+                height: auto;
+            }
         }
     }
     @include phone {
@@ -84,6 +95,13 @@
             font-size: rem(16);
             font-weight: 500;
             line-height: calc(20 / 16);
+        }
+        &__button {
+            width: rem(21);
+            height: rem(21);
+            svg {
+                width: rem(19);
+            }
         }
     }
 }
@@ -94,7 +112,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: rem(10)
+        cursor: pointer;
+        gap: rem(10);
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: var(--primary);
+        }
     }
 
     &__title {

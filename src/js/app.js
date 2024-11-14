@@ -127,10 +127,10 @@ function init(mapContainerSelector) {
         let myCollection = new ymaps.GeoObjectCollection();
         let coords = mapEl?.dataset.mark?.split(',').map(Number) || [55.7954692462696,49.10686513125719];
         // создание и установка пинов
-        myCollection.add(new ymaps.Placemark(coords, {
+        myCollection.add(new ymaps.Placemark(coords, {}, {
             iconLayout: "default#image",
             iconImageHref: imagesSrc.pinImage,
-            iconImageSize: [60, 60],
+            iconImageSize: [80, 80],
         }));
         // добавление пинов на карту
         map.geoObjects.add(myCollection);
@@ -159,10 +159,11 @@ function init(mapContainerSelector) {
     // zoom ctrl + mouse wheel
     let ctrlKey = false
     let body = document.getElementsByTagName('body')[0];
-    map.behaviors.disable(['scrollZoom', 'drag']);
+    map.behaviors.disable(['scrollZoom']);
     body.onkeydown = callbackDown;
     body.onkeyup = callbackUp;
     function callbackDown(e){
+        console.log("!!!")
         if(e.keyCode === 17 && !ctrlKey){
             ctrlKey = true
             map.behaviors.enable(['scrollZoom']);
@@ -193,7 +194,8 @@ getScrollWidthValue()
 // document.addEventListener("DOMContentLoaded", () => {
 // })
 
-window.onload = function() {
+
+document.addEventListener("DOMContentLoaded", () => {
 
     // breakpoints
     const desktopMediaQuery = window.matchMedia("(max-width: 1280px)")
@@ -210,16 +212,6 @@ window.onload = function() {
     const searchBlockEl = searchBoxEl.querySelector(".header__search-block")
     const searchButtonEl = searchBoxEl.querySelector(".header__search-button")
     const closeSearchButtonEl = searchBoxEl.querySelector(".header__close-search")
-    const consultationButtonEls = headerEl.querySelectorAll(".header__button")
-
-    const consultationPopupEl = document.querySelector(".popup--consultation");
-    const characteristicsPopupEl = document.querySelector(".popup--characteristics");
-
-    Array.from(consultationButtonEls).forEach(buttonEl => {
-        buttonEl.addEventListener("click", e => {
-            openPopup(consultationPopupEl)
-        })
-    })
 
     function documentActions(e) {
         const targetEl = e.target;
@@ -313,6 +305,11 @@ window.onload = function() {
         // const menuEl = e.currentTarget
         const submenuEl = menuEl.querySelector(".header__submenu")
         const submenuListEl = submenuEl.firstElementChild
+
+        if (window.innerWidth < 769 && e.target.closest(".header__menu-link")) {
+            e.preventDefault()
+            return
+        }
 
         if (e.target.closest(".header__submenu")) {
             return
@@ -415,7 +412,10 @@ window.onload = function() {
     }
 
     phoneMediaQuery.addEventListener("change", replaceAccordionButtons)
-    replaceAccordionButtons(phoneMediaQuery)
+    
+    if (phoneMediaQuery.matches) {
+        replaceAccordionButtons(phoneMediaQuery)  
+    } 
 
     const faqItemHeaderEls = document.querySelectorAll(".accordion__col > *:first-child");
 
@@ -520,6 +520,16 @@ window.onload = function() {
 
 
     // POPUPs
+    const consultationButtonEls = document.querySelectorAll(".header__button, .product-info__button")
+
+    const consultationPopupEl = document.querySelector(".popup--consultation");
+    const characteristicsPopupEl = document.querySelector(".popup--characteristics");
+
+    Array.from(consultationButtonEls).forEach(buttonEl => {
+        buttonEl.addEventListener("click", e => {
+            openPopup(consultationPopupEl)
+        })
+    })
     document.querySelectorAll(".popup__close").forEach(closeEl => {
         let popupEl = closeEl.closest(".popup")
         closeEl.addEventListener("click", () => closePopup(popupEl))
@@ -729,17 +739,37 @@ window.onload = function() {
         // productInfoSwiper.controller.control = productInfoThumbSwiper
     }
 
+    // LOCOMOTIVE SCROLL
+    if (window.LocomotiveScroll) {
+        let scroll = new LocomotiveScroll();
+        document.getElementById("to-top").addEventListener("click", () => {
+            scroll.scrollTo(document.body,{
+                // offset: -100,
+                duration: 800,
+            })
+        })
+    }
+
     // yandex map
-
-    // ymaps.ready(() => init("map"));
-
     if (document.getElementById("map")) {
         ymaps.ready(() => init("map"));
     }
 
     // sidebar panel
+    function replaceFilterPanel(e) {
+        const filterPanel = document.querySelector(".sidebar__body")
+        const filterPopupBodyEl = document.querySelector(".popup--filter .popup__body")
+        if (e.matches) {
+            filterPopupBodyEl.append(filterPanel)
+        } else {
+            document.querySelector(".sidebar").append(filterPanel)
+            filterPopupBodyEl.closest('.popup--open')?.classList.remove("popup--open")
+        }
+    }
+
     if (document.querySelector(".products-layout")) {
         const filterEls = document.querySelectorAll(".products-layout .filter")
+        const filterButtonEl = document.querySelector(".products-layout .sidebar__button")
 
         Array.from(filterEls).forEach(filterEl => filterEl.addEventListener("click", (e) => {
             if (!e.target.closest(".filter__header")) {
@@ -748,6 +778,12 @@ window.onload = function() {
 
             filterEl.classList.toggle("filter--open")
         }))
+
+        tabletMediaQuery.addEventListener("change", replaceFilterPanel)
+        filterButtonEl.addEventListener("click", e => {
+            const filterPopupEl = document.querySelector(".popup--filter")
+            openPopup(filterPopupEl)
+        })
     }
 
     // single product page
@@ -764,10 +800,11 @@ window.onload = function() {
                 return
             }
 
+            e.preventDefault()
             e.currentTarget.querySelector(`.${seriesClass}--active`).classList.remove(`${seriesClass}--active`)
             e.target.closest(`.${seriesClass}`).classList.add(`${seriesClass}--active`)
         })
 
         moreCharacteristics.addEventListener("click", () => openPopup(characteristicsPopupEl))
     }
-}
+})

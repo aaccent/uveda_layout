@@ -15,8 +15,8 @@
         -webkit-background-clip: text;
         -webkit-box-decoration-break: clone;
         // color: #383838;
-        font-size: rem(192);
-        @include adaptive-value(font-size, 48, 192, 576, $container-width);
+        font-size: rem(188);
+        @include adaptive-value(font-size, 48, 188, 576, $container-width);
         font-weight: 500;
         line-height: calc(200 / 210);
         white-space: nowrap;

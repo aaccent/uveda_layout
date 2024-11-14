@@ -2,7 +2,6 @@
 @import "base/_vars.scss";
 @import "base/_functions.scss";
 @import "base/_fonts.scss";
-@import "base/_icons.scss";
 @import "base/_reset.scss";
 @import "mixins/breakpoints";
 @import "mixins/media";
@@ -79,6 +78,9 @@
                 margin-top: 0;
             }
         }
+        .socials__link {
+            background-color: #F5F6F8;
+        }
     }
     @include tablet {
         &__map {
@@ -98,6 +100,11 @@
         &__map-box {
             &:not(:first-child) {
                 margin-top: rem(25);
+            }
+            .ymaps-2-1-79-image {
+                background-size: rem(60) rem(60) !important;
+                width: rem(60) !important;
+                height: rem(60) !important
             }
         }
         &__map {

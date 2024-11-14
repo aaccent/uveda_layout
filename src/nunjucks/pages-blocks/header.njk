@@ -111,22 +111,24 @@
                         </button>
                         <div class="header__search-result">
                             <div class="header__search-result-category">
-                                <div class="search-result-item">
+                                <a href="./categories" class="search-result-item">
                                     <div class="search-result-item__image">
-                                        <img src="" alt="">
+                                        <img src="./images/category-01.png" alt="category thumb">
                                     </div>
-                                    <div class="search-result-item__title">Тормозной диск двухосная 8357 передняя (12 листовая)</div>
+                                    <div class="search-result-item__title">Тормозные диски</div>
                                     <div class="search-result-item__amount _transparent">256 позиций</div>
-                                </div>
+                                </a>
                             </div>
                             <ul class="header__search-result-list">
                                 {% for item in range(3) %}
-                                    <li class="header__search-result-item search-result-item">
-                                        <div class="search-result-item__image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="search-result-item__title">Тормозной диск двухосная 8357 передняя (12 листовая)</div>
-                                        <div class="search-result-item__price">25 000 ₽</div>
+                                    <li class="header__search-result-item">
+                                        <a href="./single-product" class="header__search-result-link search-result-item">
+                                            <div class="search-result-item__image">
+                                                <img src="./images/product-01.png" alt="product thumb">
+                                            </div>
+                                            <div class="search-result-item__title">Тормозной диск двухосная 8357 передняя (12 листовая)</div>
+                                            <div class="search-result-item__price">25 000 ₽</div>
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>

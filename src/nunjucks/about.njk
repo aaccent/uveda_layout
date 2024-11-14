@@ -9,8 +9,8 @@
 
 {% block content %}
     <section class="hero">
-        <div class="hero__container container">
-            <nav class="hero__breadcrumbs breadcrumbs">
+        <nav class="hero__breadcrumbs breadcrumbs">
+            <div class="container">
                 <ol class="breadcrumbs__list">
                     <li class="breadcrumbs__item">
                         <a href="./" class="breadcrumbs__link">Главная</a>
@@ -19,7 +19,9 @@
                         <a href="#" class="breadcrumbs__link">О компании</a>
                     </li>
                 </ol>
-            </nav>
+            </div>
+        </nav>
+        <div class="hero__container container">
             <h1 class="hero__title">О Компании</h1>
         </div>
     </section>

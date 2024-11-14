@@ -165,25 +165,31 @@
     }
 
     &__series-item {
-        border: 1px solid #DDE1E8;
-        border-radius: rem(5);
-        cursor: pointer;
-        font-size: rem(16);
-        font-weight: 600;
-        line-height: calc(25 / 16);
-        letter-spacing: 0.05em;
-        padding: rem(15) rem(20);
-        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
         &--active {
-            background-color: rgba($color: #0079C4, $alpha: 0.12);
-            border-color: rgba($color: #0079C4, $alpha: 0.12);
-            color:  var(--primary);
+            .product-info__series-link {
+                background-color: rgba($color: #0079C4, $alpha: 0.12);
+                border-color: rgba($color: #0079C4, $alpha: 0.12);
+                color:  var(--primary);
+            }
         }
         @include ishover {
             &:not(.product-info__series-item--active) {
                 color: var(--primary);
             }
         }
+    }
+
+    &__series-link {
+        border: 1px solid #DDE1E8;
+        border-radius: rem(5);
+        cursor: pointer;
+        display: block;
+        font-size: rem(16);
+        font-weight: 600;
+        line-height: calc(25 / 16);
+        letter-spacing: 0.05em;
+        padding: rem(15) rem(20);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
     }
 
     &__button {
@@ -306,7 +312,7 @@
         &__series-list {
             gap: rem(5);
         }
-        &__series-item {
+        &__series-link {
             font-size: rem(14);
             line-height: calc(20 / 14);
             padding: rem(12.5) rem(15);

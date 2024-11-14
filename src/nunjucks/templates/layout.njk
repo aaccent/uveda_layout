@@ -18,7 +18,7 @@
     </main>
 
     {% include "../pages-blocks/footer.njk" %}
-    <div class="popup popup popup--consultation">
+    <div class="popup popup--consultation">
         <div class="popup__container">
             <div class="popup__content">
                 <button class="popup__close" type="button"></button>
@@ -29,11 +29,9 @@
                 <div class="popup__body">
                     <form action="#" method="POST" class="form">
                         <div class="form__field">
-                            <label for=""></label>
                             <input type="text" class="form__input" placeholder="Ваше имя">
                         </div>
                         <div class="form__field">
-                            <label for=""></label>
                             <input type="text" class="form__input" placeholder="+7 (999)-999-99-99">
                         </div>
                         <div class="form__field">
@@ -41,9 +39,9 @@
                         </div>
                         <button class="form__submit button button--primary">
                             <span class="button__text">Оставить заявку</span>
-                            <div class="button__arrow">
-                                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
-                            </div>
+                            <svg class="button__arrow" width="11" height="12" viewBox="0 0 11 12" fill="none">
+                                <path d="M0 1.5H10V11.5" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
                         </button>
                         <div class="form__agreement">Нажимая кнопку «Оставить заявку», вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
                     </form>
@@ -79,8 +77,20 @@
             </div>
         </div>
     </div>
-=    {% include "../pages-blocks/svg-sprites.njk" %}
+    <div class="popup popup--filter">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Фильтрация по продукции:</div>
+                </div>
+                <div class="popup__body"></div>
+            </div>
+        </div>
+    </div>
+    {% include "../pages-blocks/svg-sprites.njk" %}
     {% block scripts %}
+        <script src="js/libs/locomotive-scroll.min.js"></script>
         <script src="js/app.min.js"></script>
     {% endblock %}
 </body>

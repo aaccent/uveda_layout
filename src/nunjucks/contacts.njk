@@ -9,8 +9,8 @@
 
 {% block content %}
     <section class="hero section">
-        <div class="hero__container container">
-            <nav class="hero__breadcrumbs breadcrumbs">
+        <nav class="hero__breadcrumbs breadcrumbs">
+            <div class="container">
                 <ol class="breadcrumbs__list">
                     <li class="breadcrumbs__item">
                         <a href="./" class="breadcrumbs__link">Главная</a>
@@ -19,10 +19,12 @@
                         <a href="#" class="breadcrumbs__link">Контакты</a>
                     </li>
                 </ol>
-            </nav>
+            </div>
+        </nav>
+        <div class="hero__container container">
             <h1 class="hero__title">Контакты</h1>
             <div class="hero__map-box">
-                <div class="hero__map" id="map"></div>
+                <div class="hero__map" id="map" data-mark="55.7954692462696, 49.10679244528347" data-pin-image="images/map-pin.svg"></div>
                 <div class="hero__contact-info contact-info">
                     <div class="contact-info__img">
                         <img src="./images/geo-image.png" alt="">

@@ -9,7 +9,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease 0s;
-    overflow: hidden;
+    // overflow: hidden;
     z-index: var(--popup-z-index);
     &__container {
         display: flex;
@@ -17,6 +17,7 @@
         align-items: center;
         padding: rem(15);
         min-height: 100%;
+        overflow: hidden;
     }
     &__content {
         border-radius: rem(20);
@@ -86,6 +87,7 @@
             }
         }
         &__input {
+            color: var(--text-color);
             font-weight: 500;
             &--textarea {
                 height: rem(180);
@@ -143,6 +145,11 @@
     &--characteristics {
         .popup__content {
             max-width: rem(700);
+        }
+    }
+    &--filter {
+        .popup__content {
+            max-height: none;
         }
     }
     &--open {

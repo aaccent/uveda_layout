@@ -44,7 +44,7 @@
             grid-template-columns: repeat(auto-fill, minmax(rem(300), 1fr));
             padding-top: rem(20);
         }
-        &__item {
+        &__item.product {
             aspect-ratio: calc(340 / 325);
             justify-self: center;
             width: 100%;

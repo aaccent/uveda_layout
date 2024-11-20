@@ -45,6 +45,9 @@
                 height: 100%;
                 object-fit: contain;
             }
+            &:not(.swiper-slide-thumb-active) {
+                cursor: pointer;
+            }
         }
         .swiper-slide-thumb-active {
             opacity: 1;

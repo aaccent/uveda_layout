@@ -1,0 +1,166 @@
+<aside class="products-layout__sidebar sidebar">
+    <button class="sidebar__header" type="button">
+        <div class="sidebar__title">Фильтрация по продукции:</div>
+        <div class="sidebar__header-icon">
+            <svg width="19" height="17">
+                <use xlink:href="#filter">
+            </svg>
+        </div>
+    </button>
+    <div class="sidebar__body">
+        <ul class="sidebar__filters-list">
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Цена, ₽</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <div class="filter__interval">
+                        <div class="filter__interval-input">
+                            <input type="number" min="0" placeholder="от 0">
+                        </div>
+                        <div class="filter__interval-input">
+                            <input type="number" max="550" placeholder="от 550">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Бренд</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <ul class="filter__options-list">
+                        {% set brands = ["Komatsu", "Caterpillar", "HITACHI", "Hyundai"] %}
+                        {% for brand in brands %}
+                            <li class="filter__option-item">
+                                <label class="filter__option"> 
+                                    <input class="filter__option-input" type="checkbox" name="brand">
+                                    <span class="filter__option-box icon icon-check">
+                                        <svg width="11" height="9">
+                                            <use xlink:href="#check_mark">
+                                        </svg>
+                                    </span>
+                                    <span class="filter__option-label">{{ brand }}</span>
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Применяемость</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <ul class="filter__options-list">
+                        {% set brands = ["НефАЗ-96896-0110411", "НефАЗ-66062", "НефАЗ-6606", "НефАЗ-96931-10-07"] %}
+                        {% for brand in brands %}
+                            <li class="filter__option-item">
+                                <label class="filter__option"> 
+                                    <input class="filter__option-input" type="checkbox" name="brand">
+                                    <span class="filter__option-box">
+                                        <svg width="11" height="9">
+                                            <use xlink:href="#check_mark">
+                                        </svg>
+                                    </span>
+                                    <span class="filter__option-label">{{ brand }}</span>
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Стоимость</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <div class="filter__interval">
+                        <div class="filter__interval-input">
+                            <input type="number" min="0" placeholder="от 0">
+                        </div>
+                        <div class="filter__interval-input">
+                            <input type="number" max="550" placeholder="от 550">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Производительность</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <ul class="filter__options-list">
+                        {% set performances = ["Низкая", "Стандартная", "Высокая"] %}
+                        {% for performance in performances %}
+                            <li class="filter__option-item">
+                                <label class="filter__option"> 
+                                    <input class="filter__option-input" type="checkbox" name="performance">
+                                    <span class="filter__option-box">
+                                        <svg width="11" height="9">
+                                            <use xlink:href="#check_mark">
+                                        </svg>
+                                    </span>
+                                    <span class="filter__option-label">{{ performance }}</span>
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar__filter-item filter">
+                <div class="filter__header">
+                    <div class="filter__title">Частота оборотов</div>
+                    <button class="filter__arrow">
+                        <svg width="9" height="14">
+                            <use xlink:href="#catagories_arrow">
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter__body">
+                    <ul class="filter__options-list">
+                        {% set speed = ["1400 об/мин", "2500 об/мин", "3600 об/мин"] %}
+                        {% for value in speed %}
+                            <li class="filter__option-item">
+                                <label class="filter__option"> 
+                                    <input class="filter__option-input" type="checkbox" name="speed">
+                                    <span class="filter__option-box">
+                                        <svg width="11" height="9">
+                                            <use xlink:href="#check_mark">
+                                        </svg>
+                                    </span>
+                                    <span class="filter__option-label">{{ value }}</span>
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>

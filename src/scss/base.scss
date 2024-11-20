@@ -186,12 +186,12 @@ body {
 
 .swiper-button-next {
     svg {
-        transform: translate(rem(3), 0);
+        // transform: translate(rem(3), 0);
     }
 }
 .swiper-button-prev {
     svg {
-        transform: translate(rem(-3), 0) rotate(-180deg);
+        transform: rotate(-180deg);
     }
 }
 

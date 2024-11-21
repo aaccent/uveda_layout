@@ -23,6 +23,16 @@
     //         margin: rem(80) 0 0;
     //     }
     // }
+    @include phone {
+        &__item {
+            font-size: rem(12);
+            line-height: calc(15 / 12);
+        }
+        &__phone {
+            font-size: rem(18);
+            line-height: calc(25 / 18);
+        }
+    }
 }
 
 .socials {

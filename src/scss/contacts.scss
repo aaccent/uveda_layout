@@ -16,6 +16,7 @@
 
 //bem-blocks
 @import "modules/bem-blocks/logo.scss";
+@import "modules/bem-blocks/contact-info.scss";
 
 // modules
 @import "modules/header.scss";
@@ -72,11 +73,6 @@
         .contact-info__box {
             flex-grow: 1;
             justify-content: space-between;
-        }
-        .contact-info__socials {
-            &:not(:first-child) {
-                margin-top: 0;
-            }
         }
         .socials__link {
             background-color: #F5F6F8;

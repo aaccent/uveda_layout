@@ -368,7 +368,7 @@
         }
         &__address,
         &__mail,
-        &__socials {
+        &__contact-info .socials {
             display: none;
         }
         &__search {
@@ -448,10 +448,12 @@
             text-transform: uppercase;
         }
         &__contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: rem(20);
+            .socials {
+                margin: rem(35) 0 0;
+            }
+            .socials__link {
+                background-color: var(--white);
+            }
         }
         &__phone {
             font-weight: 500;
@@ -460,21 +462,6 @@
             font-weight: 600;
             text-transform: uppercase;
             opacity: 0.45;
-        }
-        &__socials {
-            display: flex;
-            gap: rem(10);
-            margin: rem(35) 0 0;
-        }
-        &__social-link {
-            background-color: var(--white);
-            border-radius: rem(12);
-            color: var(--primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: rem(60);
-            height: rem(60);
         }
         &__search {
             margin-left: auto;
@@ -495,35 +482,6 @@
             }
         }
     }
-    @media screen and (min-width: 577px) and (max-width: 1280px) {
-        &__social-item {
-            &:first-child {
-                svg {
-                    width: rem(20);
-                    height: auto;
-                }
-            }
-            &:nth-child(2) {
-                svg {
-                    width: rem(20);
-                    height: auto;
-                }
-            }
-            &:nth-child(3) {
-                svg {
-                    width: rem(23);
-                    height: auto;
-                }
-            }
-            &:last-child {
-                svg {
-                    width: rem(20);
-                    height: auto;
-                }
-            }
-        }
-    }
-
     @media screen and (min-width: 1080.5px) {
         &._form-show {
             .header__search {
@@ -775,13 +733,10 @@
         &__mail {
             font-size: rem(12);
         }
-        &__socials {
-            margin: rem(25) 0 0;
-        }
-        &__social-link {
-            border-radius: rem(8);
-            width: rem(45);
-            height: rem(45);
+        &__contact-info {
+            .socials {
+                margin-top: rem(25)
+            }
         }
         &__search {
             flex-basis: rem(45);

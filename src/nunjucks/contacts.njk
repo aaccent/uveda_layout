@@ -9,19 +9,20 @@
 
 {% block content %}
     <section class="hero section">
-        <nav class="hero__breadcrumbs breadcrumbs">
-            <div class="container">
+        <div class="container">
+            <nav class="hero__breadcrumbs breadcrumbs">
                 <ol class="breadcrumbs__list">
                     <li class="breadcrumbs__item">
                         <a href="./" class="breadcrumbs__link">Главная</a>
+                        <svg width="9" height="6">
+                            <use xlink:href="#menu_arrow">
+                        </svg>
                     </li>
                     <li class="breadcrumbs__item">
                         <a href="#" class="breadcrumbs__link">Контакты</a>
                     </li>
                 </ol>
-            </div>
-        </nav>
-        <div class="hero__container container">
+            </nav>
             <h1 class="hero__title">Контакты</h1>
             <div class="hero__map-box">
                 <div class="hero__map" id="map" data-mark="55.7954692462696, 49.10679244528347" data-pin-image="images/map-pin.svg"></div>
@@ -66,8 +67,6 @@
                     </ul>
                 
             </div>
-            </div>
-
         </div>
     </section>
     {% include "pages-blocks/feedback.njk" %}

@@ -1,4 +1,7 @@
 .licenses {
+    &__header {
+        flex-shrink: 0;
+    }
     .swiper-controls {
         background-color: #F5F6F8;
         color: var(--text-color);

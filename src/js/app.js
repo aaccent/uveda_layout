@@ -616,6 +616,7 @@ document.addEventListener("DOMContentLoaded", () => {
             slidesPerView: 1,
             speed: 800,
             loop: true,
+            parallax: true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",

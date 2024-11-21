@@ -30,16 +30,19 @@
                 pointer-events: none;
             }
         }
-        &:not(:first-child) {
-            &:before {
-                background-color: var(--text-color);
-                border-radius: 50%;
-                content: "";
-                display: block;
-                width: rem(4);
-                height: rem(4);
-            }
+        svg {
+            transform: rotate(-90deg);
         }
+        // &:not(:first-child) {
+        //     &:before {
+        //         background-color: var(--text-color);
+        //         border-radius: 50%;
+        //         content: "";
+        //         display: block;
+        //         width: rem(4);
+        //         height: rem(4);
+        //     }
+        // }
     }
     &__link {
         font-size: rem(14);

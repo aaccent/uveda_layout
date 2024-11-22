@@ -163,7 +163,6 @@ function init(mapContainerSelector) {
     body.onkeydown = callbackDown;
     body.onkeyup = callbackUp;
     function callbackDown(e){
-        console.log("!!!")
         if(e.keyCode === 17 && !ctrlKey){
             ctrlKey = true
             map.behaviors.enable(['scrollZoom']);
@@ -377,7 +376,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const tabNavEl = document.querySelector(".tab__nav")
         const tabContentEl = document.querySelector(".tab__content");
 
-        console.log(tabContentEl)
         tabNavEl.addEventListener("click", e => {
 
             if (!e.target.closest(".tab__button")) {
@@ -824,3 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
         moreCharacteristics.addEventListener("click", () => openPopup(characteristicsPopupEl))
     }
 })
+
+window.onload = () => {
+    document.body.classList.add("_loaded")
+}

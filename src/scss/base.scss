@@ -46,9 +46,14 @@ body {
     font-family: "Involve", "sans-serif";
     padding: rem(80) 0 0;
     min-width: rem(320);
+    opacity: 0;
+    transition: opacity 0.8s ease 0.3s;
     &._lock {
         height: 100%;
         overflow: hidden;
+    }
+    &._loaded {
+        opacity: 1;
     }
     @include phone {
         padding-top: rem(65);

@@ -89,37 +89,7 @@ function setError(input) {
 }
 
 function validateForm(form) {    
-    const reqFiedls = form.querySelectorAll("input[required]")
 
-    let errors = 0;
-    reqFiedls.forEach((input) => {
-        if (input.validity.valueMissing) {
-            setError(input)
-            errors++
-            return
-        }
-
-        if (input.type === 'email' && !validateEmail(input.value)) {
-            setError(input)
-            errors++
-            return
-        }
-
-        if (input.type === 'tel' && input.value.replaceAll(/\D/g, '').length < 11) {
-            setError(input)
-            errors++
-        }
-    })
-
-    if (errors) {
-        console.log("Fill req fields");
-    } else {
-        // form.classList.add("form--sending")
-        form.querySelectorAll("input, textarea").forEach(inputEl => inputEl.disabled = true)
-        setTimeout(() => {
-            resetForm(form)
-        }, 200)
-    }
 }
 
 function init(mapContainerSelector) {
@@ -509,8 +479,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < document.forms.length; i++) {
         document.forms[i].addEventListener("submit", e => {
-            e.preventDefault();
-            validateForm(e.target)
         })
     }
 

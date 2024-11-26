@@ -89,7 +89,7 @@ function setError(input) {
 }
 
 function validateForm(form) {    
-    const reqFiedls = form.querySelectorAll("[class$='input--required']")
+    const reqFiedls = form.querySelectorAll("input[required]")
 
     let errors = 0;
     reqFiedls.forEach((input) => {

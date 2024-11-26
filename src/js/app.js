@@ -79,37 +79,37 @@ function validateRuPhone(str) {
 function resetForm(form) {
     form.reset();
     // form.classList.remove("form--sending")
-    form.querySelector(".form__file").classList.remove("form__file--attached")
+    form.querySelector(".form__file")?.classList.remove("form__file--attached")
     form.querySelectorAll(".form__field").forEach(fieldEl => fieldEl.classList.remove("form__field-error"))
     form.querySelectorAll("input, textarea").forEach(inputEl => inputEl.disabled = false)
+}
+
+function setError(input) {
+    input.closest(".form__control").classList.add("form__control--error")
 }
 
 function validateForm(form) {    
     const reqFiedls = form.querySelectorAll("[class$='input--required']")
 
     let errors = 0;
-    for (let i = 0; i < reqFiedls.length; i++) {
-        if (reqFiedls[i].getAttribute("name") === "name") {
-            if (reqFiedls[i].value.trim() === "") {
-                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
-                errors++;
-            }
+    reqFiedls.forEach((input) => {
+        if (input.validity.valueMissing) {
+            setError(input)
+            errors++
+            return
         }
-        if (reqFiedls[i].getAttribute("name") === "phone") {
-            if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 18) {
-                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
-                errors++;
-            }
-        }
-        // const emailField = form.querySelector("input[type='email']")
 
-        if (reqFiedls[i].getAttribute("name") === "mail") {
-            if (reqFiedls[i].value.trim() === "" || (reqFiedls[i].value.trim !== "" && !validateEmail(reqFiedls[i].value))) {
-                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
-                errors++;
-            }
+        if (input.type === 'email' && !validateEmail(input.value)) {
+            setError(input)
+            errors++
+            return
         }
-    }
+
+        if (input.type === 'tel' && input.value.replaceAll(/\D/g, '').length < 11) {
+            setError(input)
+            errors++
+        }
+    })
 
     if (errors) {
         console.log("Fill req fields");

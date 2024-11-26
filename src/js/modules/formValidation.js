@@ -39,37 +39,32 @@ function showError(emailInput) {
     }
 }
 
+function setError(input) {
+    input.closest(".form__control").classList.add("form__control--error")
+}
+
 function validateForm(form) {    
-    const reqFiedls = form.querySelectorAll("[class$='input--required']")
+    const reqFiedls = form.querySelectorAll("input[required]")
 
     let errors = 0;
-    for (let i = 0; i < reqFiedls.length; i++) {
-        if (reqFiedls[i].getAttribute("name") === "name") {
-            if (reqFiedls[i].value.trim() === "") {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
-                errors++;
-            }
-        }
-        if (reqFiedls[i].getAttribute("name") === "phone") {
-            if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 18) {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
-                errors++;
-            }
-        }
-        const emailField = form.querySelector("input[type='email']")
-
-        if (reqFiedls[i].getAttribute("name") === "mail") {
-            if (reqFiedls[i].value.trim() === "" || (reqFiedls[i].value.trim !== "" && !validateEmail(emailField.value))) {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
-                errors++;
-            }
-
-            // if (!reqFiedls[i].checkValidity) {
-            //     showError(reqFiedls[i])
-            // }
+    reqFiedls.forEach((input) => {
+        if (input.validity.valueMissing) {
+            setError(input)
+            errors++
+            return
         }
 
-    }
+        if (input.type === 'email' && !validateEmail(input.value)) {
+            setError(input)
+            errors++
+            return
+        }
+
+        if (input.type === 'tel' && input.value.replaceAll(/\D/g, '').length < 11) {
+            setError(input)
+            errors++
+        }
+    })
 
     if (errors) {
         console.log("Fill req fields");

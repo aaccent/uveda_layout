@@ -11,6 +11,17 @@
     }
     &__swiper {
     }
+    &__license-img {
+        width: 50%;
+        object-fit: contain;
+        object-position: center;
+        height: 60%;
+        position: absolute;
+        left: rem(30);
+        top: rem(25);
+        z-index: -1;
+        background-color: #7b7b7b;
+    }
     &__license {
         border: 1px solid rgba($color: #FFFFFF, $alpha: 0.15);
         border-radius: rem(15);
@@ -68,6 +79,10 @@
         }
     }
     @include phone {
+        &__license-img {
+            left: rem(20);
+            top: rem(15);
+        }
         &__license {
             padding: rem(15) rem(20);
             width: rem(300);

@@ -1,5 +1,9 @@
 import { isWebp } from "./modules/function.js";
 
+Fancybox.bind("[data-fancybox]", {
+
+})
+
 isWebp();
 
 const isMobile = {

@@ -20,14 +20,15 @@
             <div class="licenses__swiper swiper">
                 <div class="swiper-wrapper">
                     {% for i in range(6) %}
-                        <div class="licenses__license swiper-slide">
+                        <a href="" class="licenses__license swiper-slide" data-fancybox>
+                            <img class="licenses__license-img" src="./images/doc.jpg" alt="">
                             <div class="licenses__license-arrow">
                                 <svg class="button__arrow" width="11" height="12" >
                                     <use xlink:href="#button_arrow">
                                 </svg>
                                 </div>
                             <div class="licenses__license-name">Лицензия на осуществление деятельности Л-3321</div>
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>

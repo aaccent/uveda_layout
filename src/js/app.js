@@ -623,25 +623,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 el: ".stocks .swiper-pagination",
             },
         })
-        //products
-        new Swiper(".products__swiper", {
-            slidesPerView: "auto",
-            spaceBetween: 10,
-            breakpoints: {
-                577: {
-                    spaceBetween: 16,
-
-                }
-            },
-            navigation: {
-                nextEl: ".products .swiper-button-next",
-                prevEl: " .products .swiper-button-prev",
-            },
-            pagination: {
-                el: ".products .swiper-pagination",
-            },
+        document.querySelectorAll(".products").forEach(productsSection => {
+            new Swiper(productsSection.querySelector('.products__swiper'), {
+                slidesPerView: 1.1,
+                spaceBetween: 10,
+                breakpoints: {
+                    577: {
+                        spaceBetween: 16,
+                        slidesPerView: 1.5
+                    },
+                    769: {
+                        slidesPerView: 2,
+                        spaceBetween: 16
+                    },
+                    993: {
+                        slidesPerView: 2.5,
+                    },
+                    1281: {
+                        slidesPerView: 5,
+                    }
+                },
+                navigation: {
+                    nextEl: productsSection.querySelector(".swiper-button-next"),
+                    prevEl: productsSection.querySelector(".swiper-button-prev"),
+                },
+                pagination: {
+                    el: productsSection.querySelector(".swiper-pagination"),
+                },
+            })
         })
-        // partners 
+        // partners
         new Swiper(".trust-us__swiper", {
             slidesPerView: "auto",
             spaceBetween: 10,

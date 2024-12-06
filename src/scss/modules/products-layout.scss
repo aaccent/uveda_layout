@@ -9,6 +9,7 @@
     }
 
     &__grid {
+        height: fit-content;
         display: grid;
         gap: rem(16);
         flex-grow: 1;
